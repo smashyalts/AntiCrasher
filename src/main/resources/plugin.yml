@@ -1,0 +1,4 @@
+name: AntiCrasher
+version: '${project.version}'
+main: net.craftsupport.anticrasher.AntiCrasher
+api-version: '1.13'
