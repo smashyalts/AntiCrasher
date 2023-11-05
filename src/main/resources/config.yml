@@ -1,0 +1,7 @@
+log-attempts: false
+# Set log-attempts to true if u want to log every attempt to use the exploit in console
+ban-on-attempt: false
+# Set ban-on-attempt to true if u want it to ban people trying to abuse it
+ip-ban: false
+# Set this if you want the ban to be an ip-ban instead of a normal ban
+ban-on-attempt-message: "You have been banned for trying to abuse a exploit"
