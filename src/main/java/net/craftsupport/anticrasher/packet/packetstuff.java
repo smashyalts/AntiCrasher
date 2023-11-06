@@ -23,15 +23,17 @@ public class packetstuff implements PacketListener {
             int windowId = click.getWindowId();
             int slot = click.getSlot();
 
-             if ((clickType == 1 || clickType == 2) && windowId >= 0 && (slot < 0 || button < 0)) {
+            if ((clickType == 1 || clickType == 2) && windowId >= 0 && (slot < 0 || button < 0)) {
                 event.setCancelled(true);
-                 if (AntiCrasher.getPlugin(AntiCrasher.class).getConfig().getBoolean("log-to-file")) {
-                     try {
-                         log(event.getUser().getName() + " Tried to use the Crash Exploit");
-                     } catch (IOException e) {
-                         throw new RuntimeException(e);
-                     }
-                 }
+                event.getUser().closeConnection();
+                if (AntiCrasher.getPlugin(AntiCrasher.class).getConfig().getBoolean("log-to-file")) {
+                    try {
+                        log(event.getUser().getName() + " Tried to use the Crash Exploit");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
                 if (AntiCrasher.getPlugin(AntiCrasher.class).getConfig().getBoolean("log-attempts")) {
                     getLogger().warning(event.getUser().getName() + " Tried to use the Crash Exploit");
                 }
@@ -50,13 +52,11 @@ public class packetstuff implements PacketListener {
     }
     public void log(String message) throws IOException {
         try {
-            // Create a BufferedWriter in append mode, which will open the file in append mode
             BufferedWriter writer = new BufferedWriter(new FileWriter(AntiCrasher.getPlugin(AntiCrasher.class).getDataFolder().getPath() + "/LOGS", true));
 
-            // Append the string to the file on a new line
             writer.write(message);
-            writer.newLine(); // Add a newline character
-            writer.close(); // Close the writer to save the changes
+            writer.newLine();
+            writer.close();
 
         } catch (IOException e) {
             getLogger().info(("An error occurred: " + e.getMessage()));
