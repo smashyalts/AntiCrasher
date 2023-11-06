@@ -9,3 +9,4 @@ softdepend:
   - ViaBackwards
   - ViaRewind
   - Geyser-Spigot
+  - PlaceholderAPI
