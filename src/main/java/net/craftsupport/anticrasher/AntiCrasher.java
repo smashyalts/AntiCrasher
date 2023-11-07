@@ -24,7 +24,7 @@ public final class AntiCrasher extends JavaPlugin {
         saveDefaultConfig();
         int pluginId = 20218;
         Metrics metrics = new Metrics(this, pluginId);
-        PacketEvents.getAPI().getEventManager().registerListener(new packetstuff(), PacketListenerPriority.LOW);
+        PacketEvents.getAPI().getEventManager().registerListener(new packetstuff(), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
     @Override
