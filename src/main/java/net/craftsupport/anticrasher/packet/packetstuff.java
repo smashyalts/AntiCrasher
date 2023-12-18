@@ -7,6 +7,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientCl
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -23,7 +24,7 @@ public class packetstuff implements PacketListener {
             int windowId = click.getWindowId();
             int slot = click.getSlot();
 
-            if ((clickType == 1 || clickType == 2) && windowId >= 0 && (slot < 0 && slot != -999 || button < 0)) {
+            if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
                 event.setCancelled(true);
                 event.getUser().closeConnection();
                 if (AntiCrasher.getPlugin(AntiCrasher.class).getConfig().getBoolean("log-to-file")) {
