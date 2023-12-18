@@ -3,12 +3,13 @@ package net.craftsupport.anticrasher;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import io.github.retrooper.packetevents.bstats.Metrics;
-import net.craftsupport.anticrasher.packet.packetstuff;
-import org.bukkit.plugin.Plugin;
+import net.craftsupport.anticrasher.packet.WindowListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 
 public final class AntiCrasher extends JavaPlugin {
+    private boolean isPAPIEnabled;
+
     @Override
     public void onLoad() {
 
@@ -21,14 +22,21 @@ public final class AntiCrasher extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        isPAPIEnabled = getServer().getPluginManager().isPluginEnabled("PlaceholderAPI");
+
         saveDefaultConfig();
-        int pluginId = 20218;
-        Metrics metrics = new Metrics(this, pluginId);
-        PacketEvents.getAPI().getEventManager().registerListener(new packetstuff(), PacketListenerPriority.LOWEST);
+
+        new Metrics(this, 20218);
+
+        PacketEvents.getAPI().getEventManager().registerListener(new WindowListener(this), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
     @Override
     public void onDisable() {
         PacketEvents.getAPI().terminate();
+    }
+
+    public boolean isPAPIEnabled() {
+        return isPAPIEnabled;
     }
 }
