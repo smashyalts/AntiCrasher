@@ -3,6 +3,7 @@ package net.craftsupport.anticrasher;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import io.github.retrooper.packetevents.bstats.Metrics;
+import net.craftsupport.anticrasher.packet.TabCompleteListener;
 import net.craftsupport.anticrasher.packet.WindowListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
@@ -29,6 +30,7 @@ public final class AntiCrasher extends JavaPlugin {
         new Metrics(this, 20218);
 
         PacketEvents.getAPI().getEventManager().registerListener(new WindowListener(this), PacketListenerPriority.LOWEST);
+        PacketEvents.getAPI().getEventManager().registerListener(new TabCompleteListener(this), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
     @Override
