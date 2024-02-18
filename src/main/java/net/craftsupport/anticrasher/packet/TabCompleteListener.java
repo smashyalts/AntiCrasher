@@ -7,6 +7,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTa
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -27,10 +28,12 @@ public class TabCompleteListener implements PacketListener {
             WrapperPlayClientTabComplete wrapper = new WrapperPlayClientTabComplete(event);
             String text = wrapper.getText();
             final int length = text.length();
+            Player player = Bukkit.getPlayer(event.getUser().getUUID());
             // general length limit
-            if (length > 2048) {
+            if (text.contains("@") && !player.hasPermission("Anticrasher.bypass") || text.contains("nbt") && !player.hasPermission("Anticrasher.bypass")) { handleInvalidPacket(event);}
+            if (length > 2048 ) {
                 handleInvalidPacket(event);
-                }
+            }
             // paper's patch
             final int index;
             if (text.length() > 64 && ((index = text.indexOf(' ')) == -1 || index >= 64)) {
@@ -43,14 +46,14 @@ public class TabCompleteListener implements PacketListener {
         event.getUser().closeConnection();
         if (plugin.getConfig().getBoolean("log-to-file")) {
             try {
-                log(event.getUser().getName() + " Tried to a Tab Complete Crash Exploit");
+                log(event.getUser().getName() + " Tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
         if (plugin.getConfig().getBoolean("log-attempts")) {
-            getLogger().warning(event.getUser().getName() + " Tried to a Tab Complete Crash Exploit");
+            getLogger().warning(event.getUser().getName() + " Tried to use a Tab Complete Crash Exploit");
         }
         if (plugin.getConfig().getBoolean("punish-on-attempt")) {
             String replacedString = plugin.getConfig().getString("punish-command").replace("%player%", event.getUser().getName());
