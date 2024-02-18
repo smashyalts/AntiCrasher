@@ -28,9 +28,8 @@ public class TabCompleteListener implements PacketListener {
             WrapperPlayClientTabComplete wrapper = new WrapperPlayClientTabComplete(event);
             String text = wrapper.getText();
             final int length = text.length();
-            Player player = Bukkit.getPlayer(event.getUser().getUUID());
             // general length limit
-            if (text.contains("@") && !player.hasPermission("Anticrasher.bypass") || text.contains("nbt") && !player.hasPermission("Anticrasher.bypass")) { handleInvalidPacket(event);}
+            if (text.contains("@") || text.contains("nbt")) { handleInvalidPacket(event);}
             if (length > 2048 ) {
                 handleInvalidPacket(event);
             }
