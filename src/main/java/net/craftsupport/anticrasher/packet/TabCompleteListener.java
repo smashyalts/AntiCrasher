@@ -28,14 +28,15 @@ public class TabCompleteListener implements PacketListener {
             WrapperPlayClientTabComplete wrapper = new WrapperPlayClientTabComplete(event);
             String text = wrapper.getText();
             final int length = text.length();
+            Player player = (Player) event.getPlayer();
+
             // general length limit
-            if (text.contains("@") || text.contains("nbt")) { handleInvalidPacket(event);}
-            if (length > 2048 ) {
+            if (length > 256 && !player.hasPermission("anticrasher.bypass")) {
                 handleInvalidPacket(event);
             }
             // paper's patch
             final int index;
-            if (text.length() > 64 && ((index = text.indexOf(' ')) == -1 || index >= 64)) {
+            if (text.length() > 64 && ((index = text.indexOf(' ')) == -1 && !player.hasPermission("anticrasher.bypass") || index >= 64 && !player.hasPermission("anticrasher.bypass"))) {
                 handleInvalidPacket(event);
             }
         }
@@ -45,7 +46,7 @@ public class TabCompleteListener implements PacketListener {
         event.getUser().closeConnection();
         if (plugin.getConfig().getBoolean("log-to-file")) {
             try {
-                log(event.getUser().getName() + " Tried to use a Tab Complete Crash Exploit");
+                log(event.getUser().getName() + "most likely tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
