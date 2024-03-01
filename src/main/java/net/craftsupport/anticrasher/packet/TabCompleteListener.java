@@ -53,7 +53,7 @@ public class TabCompleteListener implements PacketListener {
         }
 
         if (plugin.getConfig().getBoolean("log-attempts")) {
-            getLogger().warning(event.getUser().getName() + " Tried to use a Tab Complete Crash Exploit");
+            getLogger().warning(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
         }
         if (plugin.getConfig().getBoolean("punish-on-attempt")) {
             String replacedString = plugin.getConfig().getString("punish-command").replace("%player%", event.getUser().getName());
