@@ -21,7 +21,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version> <!-- Use the latest version -->
+                <version>3.9.6</version> <!-- Use the latest version -->
                 <configuration>
                     <relocations>
                         <relocation>
@@ -40,6 +40,10 @@
                             <pattern>org.bstats</pattern>
                             <!-- Replace this with your package! -->
                             <shadedPattern>net.craftsupport.anticrasher.bstats</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.jeff_media.updatechecker</pattern>
+                            <shadedPattern>net.craftsupport.anticrasher.updatechecker</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -103,6 +107,10 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <repository>
+            <id>jeff-media-public</id>
+            <url>https://repo.jeff-media.com/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -130,5 +138,11 @@
             <version>2.2.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>SpigotUpdateChecker</artifactId>
+            <version>3.0.3</version>
+        <scope>compile</scope>
+    </dependency>
     </dependencies>
 </project>
