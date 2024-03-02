@@ -6,7 +6,7 @@
 #    \ \__\ \__\ \__\\ \__\   \ \__\ \ \__\ \_______\ \__\\ _\\ \__\ \__\____\_\  \ \__\ \__\ \_______\ \__\\ _\ 
 #     \|__|\|__|\|__| \|__|    \|__|  \|__|\|_______|\|__|\|__|\|__|\|__|\_________\|__|\|__|\|_______|\|__|\|__|
 #                                                                       \|_________|                             
-# For more safe minecraft servers.
+# For more safe minecraft servers. AntiCrasher Plugin.
 
 
 ###########################################################################################
@@ -15,13 +15,15 @@
 #                                                                                         #
 ###########################################################################################
 
-# Set log-attempts to true if u want to log every attempt to use the exploit in console
-log-attempts: false
+# Set log-attempts to true if you want to log every attempt to use the exploit in console. (Default: true)
+log-attempts: true
 
-# Set log-to-file to true to make it log exploit attempts to a file called LOGS in the same folder as this file
-log-to-file: false
+# Set log-to-file to true to make it log exploit attempts to a file called LOGS in the same folder as this file. (Default: true)
+log-to-file: true
 
-# Command to run if someone attempts to abuse the exploit, supports PAPI placeholders, don't include the slash in the command, use %player% for to target the player if you don't have PlaceholderAPI or the Player expansion for it
+# Command to run if someone attempts to abuse the exploit, supports PAPI placeholders, 
+# don't include the slash in the command, use %player% for to target the player if you don't have PlaceholderAPI or the Player expansion for it.
+# (Default: false)
 punish-on-attempt: false
 punish-command: ""
 
@@ -31,4 +33,8 @@ punish-command: ""
 #                                                                                         #
 ###########################################################################################
 
-# It will be added later :)
+# Anti Window-Click Exploit (Default: true)
+windowclick-exploit: true
+
+# Anti Tab-Completion Exploit (Default: true)
+tabcompletion-exploit: true
