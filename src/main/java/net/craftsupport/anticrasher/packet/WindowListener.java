@@ -22,23 +22,23 @@ public class WindowListener implements PacketListener {
     }
 
     public void onPacketReceive(PacketReceiveEvent event) {
-        if (event.getPacketType() == PacketType.Play.Client.CLICK_WINDOW) {
-            WrapperPlayClientClickWindow click = new WrapperPlayClientClickWindow(event);
-            int clickType = click.getWindowClickType().ordinal();
-            int button = click.getButton();
-            int windowId = click.getWindowId();
-            int slot = click.getSlot();
+        if (plugin.getConfig().getBoolean("windowclick-exploit")) {
+            if (event.getPacketType() == PacketType.Play.Client.CLICK_WINDOW) {
+                WrapperPlayClientClickWindow click = new WrapperPlayClientClickWindow(event);
+                int clickType = click.getWindowClickType().ordinal();
+                int button = click.getButton();
+                int windowId = click.getWindowId();
+                int slot = click.getSlot();
 
-            if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
-                handleInvalidPacket(event);
-            }
+                if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
+                    handleInvalidPacket(event);
+                }
 
-            else if (windowId >= 0 && clickType == 2 && slot < 0) {
-                handleInvalidPacket(event);
+                else if (windowId >= 0 && clickType == 2 && slot < 0) {
+                    handleInvalidPacket(event);
+                }
             }
         }
-
-
     }
 
     public void handleInvalidPacket(PacketReceiveEvent event) {
