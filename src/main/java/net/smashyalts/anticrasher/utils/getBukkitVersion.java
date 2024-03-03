@@ -1,13 +1,12 @@
 package net.smashyalts.anticrasher.utils;
 
+import net.smashyalts.anticrasher.AntiCrasher;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
-public class getBukkitVersion extends JavaPlugin {
+public class getBukkitVersion {
     // Error message when plugin doesn't support bukkit
-    String unsupportedVer = "This plugin doesn't support your bukkit version!\nUpdate your bukkit!";
 
     public static boolean isMC120(){
         return Bukkit.getBukkitVersion().contains("1.20");
@@ -116,7 +115,7 @@ public class getBukkitVersion extends JavaPlugin {
             return false;
         return true;
     }
-    public boolean isMC113OrNewer(){
+    public static boolean isMC113OrNewer(){
         if (isMC113())
             return true;
         else if (isMC112()||isMC111()||isMC110()||isMC19()||isMC18()||isMC17()||isMC16()||isMC15())
@@ -125,8 +124,6 @@ public class getBukkitVersion extends JavaPlugin {
     }
     public boolean isMC112OrNewer(){
         if (isMC112()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC111()||isMC110()||isMC19()||isMC18()||isMC17()||isMC16()||isMC15())
             return false;
@@ -134,8 +131,6 @@ public class getBukkitVersion extends JavaPlugin {
     }
     public boolean isMC111OrNewer(){
         if (isMC111()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC110()||isMC19()||isMC18()||isMC17()||isMC16()||isMC15())
             return false;
@@ -143,8 +138,6 @@ public class getBukkitVersion extends JavaPlugin {
     }
     public boolean isMC110OrNewer(){
         if (isMC110()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC19()||isMC18()||isMC17()||isMC16()||isMC15())
             return false;
@@ -153,8 +146,6 @@ public class getBukkitVersion extends JavaPlugin {
 
     public boolean isMC19OrNewer(){
         if (isMC19()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC18()||isMC17()||isMC16()||isMC15())
             return false;
@@ -163,8 +154,6 @@ public class getBukkitVersion extends JavaPlugin {
 
     public boolean isMC18OrNewer(){
         if (isMC18()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC17()||isMC16()||isMC15())
             return false;
@@ -172,8 +161,6 @@ public class getBukkitVersion extends JavaPlugin {
     }
     public boolean isMC17OrNewer(){
         if (isMC17()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC16()||isMC15())
             return false;
@@ -181,8 +168,6 @@ public class getBukkitVersion extends JavaPlugin {
     }
     public boolean isMC16OrNewer(){
         if (isMC16()) {
-            getLogger().log(Level.SEVERE, unsupportedVer);
-            getServer().getPluginManager().disablePlugin(this);
             return true;
         } else if (isMC15())
             return false;
