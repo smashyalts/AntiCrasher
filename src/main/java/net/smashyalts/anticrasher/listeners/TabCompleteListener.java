@@ -1,11 +1,11 @@
-package net.craftsupport.anticrasher.packet;
+package net.smashyalts.anticrasher.listeners;
 
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTabComplete;
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.craftsupport.anticrasher.AntiCrasher;
+import net.smashyalts.anticrasher.AntiCrasher;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -24,20 +24,22 @@ public class TabCompleteListener implements PacketListener {
 
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
-        if (event.getPacketType() == PacketType.Play.Client.TAB_COMPLETE) {
-            WrapperPlayClientTabComplete wrapper = new WrapperPlayClientTabComplete(event);
-            String text = wrapper.getText();
-            final int length = text.length();
-            Player player = (Player) event.getPlayer();
+        if (plugin.getConfig().getBoolean("tabcompletion-exploit")) {
+            if (event.getPacketType() == PacketType.Play.Client.TAB_COMPLETE) {
+                WrapperPlayClientTabComplete wrapper = new WrapperPlayClientTabComplete(event);
+                String text = wrapper.getText();
+                final int length = text.length();
+                Player player = (Player) event.getPlayer();
 
-            // general length limit
-            if (length > 256 && !player.hasPermission("anticrasher.bypass")) {
-                handleInvalidPacket(event);
-            }
-            // paper's patch
-            final int index;
-            if (text.length() > 64 && ((index = text.indexOf(' ')) == -1 && !player.hasPermission("anticrasher.bypass") || index >= 64 && !player.hasPermission("anticrasher.bypass"))) {
-                handleInvalidPacket(event);
+                // general length limit
+                if (length > 256 && !player.hasPermission("anticrasher.bypass")) {
+                    handleInvalidPacket(event);
+                }
+                // paper's patch
+                final int index;
+                if (text.length() > 64 && ((index = text.indexOf(' ')) == -1 && !player.hasPermission("anticrasher.bypass") || index >= 64 && !player.hasPermission("anticrasher.bypass"))) {
+                    handleInvalidPacket(event);
+                }
             }
         }
     }
@@ -46,7 +48,7 @@ public class TabCompleteListener implements PacketListener {
         event.getUser().closeConnection();
         if (plugin.getConfig().getBoolean("log-to-file")) {
             try {
-                log(event.getUser().getName() + "most likely tried to use a Tab Complete Crash Exploit");
+                log(event.getUser().getName()+"(UUID: " + event.getUser().getUUID() + ", IP Address: " + event.getUser().getAddress() + ")" + " most likely tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
