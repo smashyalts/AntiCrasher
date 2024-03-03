@@ -18,9 +18,9 @@ import static org.bukkit.Bukkit.getLogger;
 public class WindowListener implements PacketListener {
     private final AntiCrasher plugin;
     private final utils utilsInstance;
-    public WindowListener(final AntiCrasher plugin) {
+    public WindowListener(final AntiCrasher plugin, utils util) {
         this.plugin = plugin;
-        this.utilsInstance = new utils(plugin);
+        this.utilsInstance = util;
     }
 
     public void onPacketReceive(PacketReceiveEvent event) {

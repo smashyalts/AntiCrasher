@@ -19,9 +19,10 @@ import static org.bukkit.Bukkit.getLogger;
 public class TabCompleteListener implements PacketListener {
     private final AntiCrasher plugin;
     private final utils utilsInstance;
-    public TabCompleteListener(AntiCrasher plugin) {
+
+    public TabCompleteListener(AntiCrasher plugin, utils util) {
         this.plugin = plugin;
-        this.utilsInstance = new utils(plugin);
+        this.utilsInstance = util;
     }
 
     @Override

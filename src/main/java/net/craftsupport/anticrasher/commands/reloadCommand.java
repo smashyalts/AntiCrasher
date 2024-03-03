@@ -7,13 +7,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class reload implements CommandExecutor {
+public class reloadCommand implements CommandExecutor {
+
     private final AntiCrasher plugin;
-    private final utils utilsInstance;
-    public reload(AntiCrasher plugin) {
+
+    public utils util;
+
+    public reloadCommand(AntiCrasher plugin, utils util) {
         this.plugin = plugin;
         this.util = util;
     }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("acreload")) {
