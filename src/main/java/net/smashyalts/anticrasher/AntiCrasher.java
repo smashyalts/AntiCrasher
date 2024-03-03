@@ -32,7 +32,7 @@ public class AntiCrasher extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if(!getBukkitVersion.isMC113OrNewer()) {
+        if(!getBukkitVersion.isMC18OrNewer()) {
             getLogger().log(Level.SEVERE, "This plugin doesn't support your bukkit version! Update your bukkit!");
             Bukkit.getPluginManager().disablePlugin(this);
         } else {

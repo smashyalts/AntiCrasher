@@ -35,10 +35,13 @@ public class getBukkitVersion {
     public static boolean isMC15(){
         return Bukkit.getBukkitVersion().contains("1.5");
     }
-    public static boolean isMC113OrNewer(){
-        if (isMC113())
+    public static boolean isMC14(){
+        return Bukkit.getBukkitVersion().contains("1.4");
+    }
+    public static boolean isMC18OrNewer(){
+        if (isMC18())d
             return true;
-        else if (isMC112()||isMC111()||isMC110()||isMC19()||isMC18()||isMC17()||isMC16()||isMC15())
+        else if (isMC17()||isMC16()||isMC15()||isMC14())
             return false;
         return true;
     }
