@@ -26,24 +26,24 @@
                     <relocations>
                         <relocation>
                             <pattern>com.github.retrooper.packetevents</pattern>
-                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.api</shadedPattern>
+                            <shadedPattern>net.smashyalts.anticrasher.packetevents.api</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>io.github.retrooper.packetevents</pattern>
-                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.impl</shadedPattern>
+                            <shadedPattern>net.smashyalts.anticrasher.packetevents.impl</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>net.kyori</pattern>
-                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.kyori</shadedPattern>
+                            <shadedPattern>net.smashyalts.anticrasher.packetevents.kyori</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <!-- Replace this with your package! -->
-                            <shadedPattern>net.net.smashyalts.anticrasher.bstats</shadedPattern>
+                            <shadedPattern>net.smashyalts.anticrasher.bstats</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>com.jeff_media.updatechecker</pattern>
-                            <shadedPattern>net.net.smashyalts.anticrasher.updatechecker</shadedPattern>
+                            <shadedPattern>net.smashyalts.anticrasher.updatechecker</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
