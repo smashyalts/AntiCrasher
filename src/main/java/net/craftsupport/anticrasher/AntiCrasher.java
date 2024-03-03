@@ -3,6 +3,7 @@ package net.craftsupport.anticrasher;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import io.github.retrooper.packetevents.bstats.Metrics;
+import net.craftsupport.anticrasher.commands.reloadCommand;
 import net.craftsupport.anticrasher.packet.TabCompleteListener;
 import net.craftsupport.anticrasher.packet.WindowListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +23,6 @@ public final class AntiCrasher extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getCommand("acreload").setExecutor(new net.craftsupport.anticrasher.commands.reload(this));
         isPAPIEnabled = getServer().getPluginManager().isPluginEnabled("PlaceholderAPI");
         saveDefaultConfig();
 

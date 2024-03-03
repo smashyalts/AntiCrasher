@@ -6,7 +6,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientClickWindow;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
-import net.craftsupport.anticrasher.utils;
+import net.craftsupport.anticrasher.utils.utils;
 import org.bukkit.Bukkit;
 
 import java.io.BufferedWriter;

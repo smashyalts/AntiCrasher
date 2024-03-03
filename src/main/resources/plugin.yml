@@ -10,7 +10,7 @@ softdepend:
   - ViaRewind
   - Geyser-Spigot
   - PlaceholderAPI
-
+author: CraftSupport
 commands:
   acreload:
     description: Reloads the plugin

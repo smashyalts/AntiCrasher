@@ -1,6 +1,8 @@
-package net.craftsupport.anticrasher;
+package net.craftsupport.anticrasher.utils;
 
-public class utils  {
+import net.craftsupport.anticrasher.AntiCrasher;
+
+public class utils {
     private final AntiCrasher plugin;
     public boolean logtofile;
     public boolean logattempts;
@@ -15,7 +17,7 @@ public String dataFolder;
         this.punishcommand = plugin.getConfig().getString("punish-command");
         this.dataFolder = plugin.getDataFolder().getPath();
     }
-    public void reloadConfig() {
+   public void reloadConfig() {
         this.logtofile = plugin.getConfig().getBoolean("log-to-file");
         this.logattempts = plugin.getConfig().getBoolean("log-attempts");
         this.punishonattempt = plugin.getConfig().getBoolean("punish-on-attempt");
