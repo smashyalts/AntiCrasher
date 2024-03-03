@@ -15,4 +15,11 @@ public String dataFolder;
         this.punishcommand = plugin.getConfig().getString("punish-command");
         this.dataFolder = plugin.getDataFolder().getPath();
     }
+    public void reloadConfig() {
+        this.logtofile = plugin.getConfig().getBoolean("log-to-file");
+        this.logattempts = plugin.getConfig().getBoolean("log-attempts");
+        this.punishonattempt = plugin.getConfig().getBoolean("punish-on-attempt");
+        this.punishcommand = plugin.getConfig().getString("punish-command");
+        this.dataFolder = plugin.getDataFolder().getPath();
+    }
 }
