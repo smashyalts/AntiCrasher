@@ -13,7 +13,6 @@ public final class AntiCrasher extends JavaPlugin {
 
     @Override
     public void onLoad() {
-
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
         PacketEvents.getAPI().getSettings().reEncodeByDefault(false)
                 .checkForUpdates(true)
@@ -25,7 +24,6 @@ public final class AntiCrasher extends JavaPlugin {
     public void onEnable() {
         getCommand("acreload").setExecutor(new net.craftsupport.anticrasher.commands.reload(this));
         isPAPIEnabled = getServer().getPluginManager().isPluginEnabled("PlaceholderAPI");
-
         saveDefaultConfig();
 
         new Metrics(this, 20218);
@@ -34,6 +32,8 @@ public final class AntiCrasher extends JavaPlugin {
         PacketEvents.getAPI().getEventManager().registerListener(new TabCompleteListener(this), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
+
+
     @Override
     public void onDisable() {
         PacketEvents.getAPI().terminate();

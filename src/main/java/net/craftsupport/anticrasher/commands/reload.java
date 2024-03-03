@@ -18,8 +18,11 @@ public class reload implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender.hasPermission("anticrasher.reload")) {
-            plugin.reloadConfig();
-            utilsInstance.reloadConfig();
+            AntiCrasher.getPlugin(AntiCrasher.class).reloadConfig();
+            utilsInstance.logattempts = plugin.getConfig().getBoolean("log-attempts");
+            utilsInstance.logtofile = plugin.getConfig().getBoolean("log-to-file");
+            utilsInstance.punishonattempt = plugin.getConfig().getBoolean("punish-on-attempt");
+            utilsInstance.punishcommand = plugin.getConfig().getString("punish-command");
             commandSender.sendMessage(ChatColor.GREEN + "AntiCrasher config reloaded!");
         } else {
             commandSender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
