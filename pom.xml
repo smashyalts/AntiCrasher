@@ -21,7 +21,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.9.6</version> <!-- Use the latest version -->
+                <version>3.2.4</version> <!-- Use the latest version -->
                 <configuration>
                     <relocations>
                         <relocation>
