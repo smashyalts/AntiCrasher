@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.craftsupport</groupId>
+    <groupId>net.smashyalts</groupId>
     <artifactId>AntiCrasher</artifactId>
     <version>1.4.2</version>
     <packaging>jar</packaging>
@@ -26,24 +26,24 @@
                     <relocations>
                         <relocation>
                             <pattern>com.github.retrooper.packetevents</pattern>
-                            <shadedPattern>net.craftsupport.anticrasher.packetevents.api</shadedPattern>
+                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.api</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>io.github.retrooper.packetevents</pattern>
-                            <shadedPattern>net.craftsupport.anticrasher.packetevents.impl</shadedPattern>
+                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.impl</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>net.kyori</pattern>
-                            <shadedPattern>net.craftsupport.anticrasher.packetevents.kyori</shadedPattern>
+                            <shadedPattern>net.net.smashyalts.anticrasher.packetevents.kyori</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <!-- Replace this with your package! -->
-                            <shadedPattern>net.craftsupport.anticrasher.bstats</shadedPattern>
+                            <shadedPattern>net.net.smashyalts.anticrasher.bstats</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>com.jeff_media.updatechecker</pattern>
-                            <shadedPattern>net.craftsupport.anticrasher.updatechecker</shadedPattern>
+                            <shadedPattern>net.net.smashyalts.anticrasher.updatechecker</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

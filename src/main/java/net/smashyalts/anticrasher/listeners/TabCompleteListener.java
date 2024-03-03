@@ -1,11 +1,11 @@
-package net.craftsupport.anticrasher.packet;
+package net.smashyalts.anticrasher.listeners;
 
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTabComplete;
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.craftsupport.anticrasher.AntiCrasher;
+import net.smashyalts.anticrasher.AntiCrasher;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
