@@ -23,6 +23,7 @@ public final class AntiCrasher extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getCommand("acreload").setExecutor(new net.craftsupport.anticrasher.commands.reload(this));
         isPAPIEnabled = getServer().getPluginManager().isPluginEnabled("PlaceholderAPI");
 
         saveDefaultConfig();

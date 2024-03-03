@@ -6,6 +6,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTabComplete;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
+import net.craftsupport.anticrasher.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -17,9 +18,10 @@ import static org.bukkit.Bukkit.getLogger;
 
 public class TabCompleteListener implements PacketListener {
     private final AntiCrasher plugin;
-
+    private final utils utilsInstance;
     public TabCompleteListener(AntiCrasher plugin) {
         this.plugin = plugin;
+        this.utilsInstance = new utils(plugin);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class TabCompleteListener implements PacketListener {
     public void handleInvalidPacket(PacketReceiveEvent event) {
         event.setCancelled(true);
         event.getUser().closeConnection();
-        if (plugin.getConfig().getBoolean("log-to-file")) {
+        if (utilsInstance.logtofile) {
             try {
                 log(event.getUser().getName() + "most likely tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
@@ -52,11 +54,11 @@ public class TabCompleteListener implements PacketListener {
             }
         }
 
-        if (plugin.getConfig().getBoolean("log-attempts")) {
+        if (utilsInstance.logattempts) {
             getLogger().warning(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
         }
-        if (plugin.getConfig().getBoolean("punish-on-attempt")) {
-            String replacedString = plugin.getConfig().getString("punish-command").replace("%player%", event.getUser().getName());
+        if (utilsInstance.punishonattempt) {
+            String replacedString = utilsInstance.punishcommand.replace("%player%", event.getUser().getName());
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (plugin.isPAPIEnabled()) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(event.getUser().getUUID()), replacedString));
@@ -69,7 +71,7 @@ public class TabCompleteListener implements PacketListener {
 
     public void log(String message) throws IOException {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(plugin.getDataFolder().getPath() + "/LOGS", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(utilsInstance.dataFolder + "/LOGS", true));
 
             writer.write(message);
             writer.newLine();

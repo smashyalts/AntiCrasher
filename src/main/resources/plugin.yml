@@ -10,3 +10,9 @@ softdepend:
   - ViaRewind
   - Geyser-Spigot
   - PlaceholderAPI
+
+commands:
+  acreload:
+    description: Reloads the plugin
+    usage: /acreload
+    permission: anticrasher.reload
