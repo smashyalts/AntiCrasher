@@ -14,7 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static org.bukkit.Bukkit.getLogger;
-
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 public class WindowListener implements PacketListener {
     private final AntiCrasher plugin;
     private final utils utilsInstance;
@@ -69,18 +70,19 @@ public class WindowListener implements PacketListener {
         }
     }
 
+
     public void log(String message) throws IOException {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(utilsInstance.dataFolder + "/LOGS", true));
 
-            writer.write(message);
+            String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            writer.write(timestamp + " - " + message);
             writer.newLine();
             writer.close();
 
         } catch (IOException e) {
             getLogger().info(("An error occurred: " + e.getMessage()));
         }
-
     }
 }
 

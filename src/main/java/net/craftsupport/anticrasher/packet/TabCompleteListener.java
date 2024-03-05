@@ -15,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static org.bukkit.Bukkit.getLogger;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TabCompleteListener implements PacketListener {
     private final AntiCrasher plugin;
@@ -49,7 +51,7 @@ public class TabCompleteListener implements PacketListener {
         event.getUser().closeConnection();
         if (utilsInstance.logtofile) {
             try {
-                log(event.getUser().getName() + "most likely tried to use a Tab Complete Crash Exploit");
+                log(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -70,17 +72,19 @@ public class TabCompleteListener implements PacketListener {
         }
     }
 
+
+
     public void log(String message) throws IOException {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(utilsInstance.dataFolder + "/LOGS", true));
 
-            writer.write(message);
+            String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            writer.write(timestamp + " - " + message);
             writer.newLine();
             writer.close();
 
         } catch (IOException e) {
             getLogger().info(("An error occurred: " + e.getMessage()));
         }
-
     }
 }
