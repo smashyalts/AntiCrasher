@@ -20,7 +20,8 @@ public final class AntiCrasher extends JavaPlugin {
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
         PacketEvents.getAPI().getSettings().reEncodeByDefault(false)
                 .checkForUpdates(true)
-                .bStats(true);
+                .bStats(true)
+                        .kickOnPacketException(true);
         PacketEvents.getAPI().load();
     }
 
