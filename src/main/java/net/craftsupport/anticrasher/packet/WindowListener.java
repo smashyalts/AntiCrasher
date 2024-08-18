@@ -2,8 +2,13 @@ package net.craftsupport.anticrasher.packet;
 
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
+import com.github.retrooper.packetevents.event.PacketSendEvent;
+import com.github.retrooper.packetevents.protocol.item.type.ItemType;
+import com.github.retrooper.packetevents.protocol.item.type.ItemTypes;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientClickWindow;
+import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientEditBook;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetSlot;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
 import net.craftsupport.anticrasher.utils.utils;
@@ -41,7 +46,12 @@ public class WindowListener implements PacketListener {
             }
         }
 
-
+        if (event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
+            WrapperPlayClientEditBook editBook = new WrapperPlayClientEditBook(event);
+            if (editBook.getTitle().length() > 32) {
+                handleInvalidPacket(event);
+            }
+        }
     }
 
     public void handleInvalidPacket(PacketReceiveEvent event) {
