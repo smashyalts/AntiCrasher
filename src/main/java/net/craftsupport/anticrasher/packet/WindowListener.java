@@ -3,6 +3,7 @@ package net.craftsupport.anticrasher.packet;
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
+import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.protocol.item.type.ItemType;
 import com.github.retrooper.packetevents.protocol.item.type.ItemTypes;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
@@ -30,21 +31,22 @@ public class WindowListener implements PacketListener {
     }
 
     public void onPacketReceive(PacketReceiveEvent event) {
-        if (event.getPacketType() == PacketType.Play.Client.CLICK_WINDOW) {
-            WrapperPlayClientClickWindow click = new WrapperPlayClientClickWindow(event);
-            int clickType = click.getWindowClickType().ordinal();
-            int button = click.getButton();
-            int windowId = click.getWindowId();
-            int slot = click.getSlot();
+        if (event.getServerVersion().isOlderThan(ServerVersion.V_1_20_5)){
+            if (event.getPacketType() == PacketType.Play.Client.CLICK_WINDOW) {
+                WrapperPlayClientClickWindow click = new WrapperPlayClientClickWindow(event);
+                int clickType = click.getWindowClickType().ordinal();
+                int button = click.getButton();
+                int windowId = click.getWindowId();
+                int slot = click.getSlot();
 
-            if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
+                if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
                 handleInvalidPacket(event);
-            }
+                }
 
-            else if (windowId >= 0 && clickType == 2 && slot < 0) {
+                else if (windowId >= 0 && clickType == 2 && slot < 0) {
                 handleInvalidPacket(event);
+                }};
             }
-        }
 
         if (event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
             WrapperPlayClientEditBook editBook = new WrapperPlayClientEditBook(event);

@@ -1,7 +1,7 @@
 name: AntiCrasher
 version: '${project.version}'
 main: net.craftsupport.anticrasher.AntiCrasher
-api-version: '1.13'
+api-version: '1.21'
 softdepend:
   - ProtocolLib
   - ProtocolSupport
