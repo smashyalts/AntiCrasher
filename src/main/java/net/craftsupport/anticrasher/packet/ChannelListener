@@ -1,0 +1,96 @@
+package net.craftsupport.anticrasher.packet;
+
+import com.github.retrooper.packetevents.event.PacketListener;
+import com.github.retrooper.packetevents.event.PacketReceiveEvent;
+import com.github.retrooper.packetevents.protocol.packettype.PacketType;
+import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPluginMessage;
+import me.clip.placeholderapi.PlaceholderAPI;
+import net.craftsupport.anticrasher.AntiCrasher;
+import net.craftsupport.anticrasher.utils.utils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import static org.bukkit.Bukkit.getLogger;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ChannelListener implements PacketListener {
+    private final AntiCrasher plugin;
+    private final utils utilsInstance;
+
+    public ChannelListener(AntiCrasher plugin, utils util) {
+        this.plugin = plugin;
+        this.utilsInstance = util;
+    }
+
+    @Override
+    public void onPacketReceive(PacketReceiveEvent event) {
+        if (event.getPacketType() == PacketType.Play.Client.PLUGIN_MESSAGE) {
+            WrapperPlayClientPluginMessage wrapper = new WrapperPlayClientPluginMessage(event);
+            String channel = wrapper.getChannelName();
+            byte[] data = wrapper.getData();
+            Player player = (Player) event.getPlayer();
+
+            String channelLower = channel.toLowerCase();
+            if (!channel.equals(channelLower)) {
+                handleInvalidPacket(event);
+                return;
+            }
+
+            boolean isRegisterChannel = false;
+            if (channelLower.contains(":")) {
+                String[] parts = channelLower.split(":", 2);
+                if (parts.length == 2 && (parts[1].equals("register") || parts[1].equals("unregister"))) {
+                    isRegisterChannel = true;
+                }
+            } else {
+                if (channelLower.equals("register") || channelLower.equals("unregister")) {
+                    isRegisterChannel = true;
+                }
+            }
+
+            if (isRegisterChannel && data.length > 64 && !player.hasPermission("anticrasher.bypass")) {
+                handleInvalidPacket(event);
+            }
+        }
+    }
+
+    public void handleInvalidPacket(PacketReceiveEvent event) {
+        event.setCancelled(true);
+        event.getUser().closeConnection();
+        String userName = event.getUser().getName();
+        if (utilsInstance.logtofile) {
+            try {
+                log(userName + " tried to use a channel exploit");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (utilsInstance.logattempts) {
+            getLogger().warning(userName + " tried to use the Channel Exploit");
+        }
+        if (utilsInstance.punishonattempt) {
+            String replacedString = utilsInstance.punishcommand.replace("%player%", userName);
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                if (plugin.isPAPIEnabled()) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                            PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(event.getUser().getUUID()), replacedString));
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedString);
+                }
+            });
+        }
+    }
+
+    private void log(String message) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(utilsInstance.dataFolder + "/LOGS", true))) {
+            String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            writer.write(timestamp + " - " + message);
+            writer.newLine();
+        } catch (IOException e) {
+            getLogger().info("An error occurred: " + e.getMessage());
+        }
+    }
+}
