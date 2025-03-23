@@ -31,8 +31,8 @@ jobs:
 
       - name: Build with Maven
         run: |
-          ./mvnw clean package --batch-mode --no-transfer-progress --show-version
-          echo "version=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+          mvn clean package --batch-mode --no-transfer-progress --show-version
+          echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
