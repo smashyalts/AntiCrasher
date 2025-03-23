@@ -50,7 +50,7 @@ public class WindowListener implements PacketListener {
 
         if (event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
             WrapperPlayClientEditBook editBook = new WrapperPlayClientEditBook(event);
-            if (editBook.getTitle().length() > 32) {
+            if (editBook.getTitle() == null || editBook.getTitle().length() > 32) {
                 handleInvalidPacket(event);
             }
         }
