@@ -38,6 +38,7 @@ public final class AntiCrasher extends JavaPlugin {
 
         PacketEvents.getAPI().getEventManager().registerListener(new WindowListener(this, utilsInstance), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().getEventManager().registerListener(new TabCompleteListener(this, utilsInstance), PacketListenerPriority.LOWEST);
+        PacketEvents.getAPI().getEventManager().registerListener(new ChannelListener(this, utilsInstance), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
 
