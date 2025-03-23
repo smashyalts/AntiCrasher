@@ -6,7 +6,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTabComplete;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
-import net.craftsupport.anticrasher.utils.utils;
+import net.craftsupport.anticrasher.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -20,9 +20,9 @@ import java.time.format.DateTimeFormatter;
 
 public class TabCompleteListener implements PacketListener {
     private final AntiCrasher plugin;
-    private final utils utilsInstance;
+    private final Utils utilsInstance;
 
-    public TabCompleteListener(AntiCrasher plugin, utils util) {
+    public TabCompleteListener(AntiCrasher plugin, Utils util) {
         this.plugin = plugin;
         this.utilsInstance = util;
     }
@@ -49,19 +49,21 @@ public class TabCompleteListener implements PacketListener {
     public void handleInvalidPacket(PacketReceiveEvent event) {
         event.setCancelled(true);
         event.getUser().closeConnection();
-        if (utilsInstance.logtofile) {
+
+        if (utilsInstance.logToFile) {
             try {
-                log(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
+                utilsInstance.log(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        if (utilsInstance.logattempts) {
+        if (utilsInstance.logAttempts) {
             getLogger().warning(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
         }
-        if (utilsInstance.punishonattempt) {
-            String replacedString = utilsInstance.punishcommand.replace("%player%", event.getUser().getName());
+
+        if (utilsInstance.punishOnAttempt) {
+            String replacedString = utilsInstance.punishCommand.replace("%player%", event.getUser().getName());
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (plugin.isPAPIEnabled()) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(event.getUser().getUUID()), replacedString));
@@ -69,22 +71,6 @@ public class TabCompleteListener implements PacketListener {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedString);
                 }
             });
-        }
-    }
-
-
-
-    public void log(String message) throws IOException {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(utilsInstance.dataFolder + "/LOGS", true));
-
-            String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            writer.write(timestamp + " - " + message);
-            writer.newLine();
-            writer.close();
-
-        } catch (IOException e) {
-            getLogger().info(("An error occurred: " + e.getMessage()));
         }
     }
 }
