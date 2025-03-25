@@ -27,17 +27,19 @@ public class ChannelListener implements PacketListener {
             WrapperPlayClientPluginMessage wrapper = new WrapperPlayClientPluginMessage(event);
             String channel = wrapper.getChannelName();
             byte[] data = wrapper.getData();
+
             Player player = event.getPlayer();
+            boolean bypass = player.hasPermission("anticrasher.bypass");
 
             String channelLower = channel.toLowerCase();
-            if (!channel.equals(channelLower) && !player.hasPermission("anticrasher.bypass")) {
+            if (!channel.equals(channelLower) && !bypass) {
                 handleInvalidPacket(event);
                 return;
             }
 
             boolean isRegisterChannel = isRegisterChannel(channelLower);
 
-            if (isRegisterChannel && data.length > 64 && !player.hasPermission("anticrasher.bypass")) {
+            if (isRegisterChannel && data.length > 64 && !bypass) {
                 handleInvalidPacket(event);
             }
         }
