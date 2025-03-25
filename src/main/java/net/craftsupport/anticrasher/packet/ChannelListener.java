@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import static org.bukkit.Bukkit.getLogger;
 import java.io.IOException;
 
-
 public class ChannelListener implements PacketListener {
     private final AntiCrasher plugin;
     private final Utils utilsInstance;
@@ -28,7 +27,7 @@ public class ChannelListener implements PacketListener {
             WrapperPlayClientPluginMessage wrapper = new WrapperPlayClientPluginMessage(event);
             String channel = wrapper.getChannelName();
             byte[] data = wrapper.getData();
-            Player player = (Player) event.getPlayer();
+            Player player = event.getPlayer();
 
             String channelLower = channel.toLowerCase();
             if (!channel.equals(channelLower) || !player.hasPermission("anticrasher.bypass")) {
@@ -36,22 +35,27 @@ public class ChannelListener implements PacketListener {
                 return;
             }
 
-            boolean isRegisterChannel = false;
-            if (channelLower.contains(":")) {
-                String[] parts = channelLower.split(":", 2);
-                if (parts.length == 2 && (parts[1].equals("register") || parts[1].equals("unregister"))) {
-                    isRegisterChannel = true;
-                }
-            } else {
-                if (channelLower.equals("register") || channelLower.equals("unregister")) {
-                    isRegisterChannel = true;
-                }
-            }
+            boolean isRegisterChannel = isRegisterChannel(channelLower);
 
             if (isRegisterChannel && data.length > 64 && !player.hasPermission("anticrasher.bypass")) {
                 handleInvalidPacket(event);
             }
         }
+    }
+
+    private static boolean isRegisterChannel(String channelLower) {
+        boolean isRegisterChannel = false;
+        if (channelLower.contains(":")) {
+            String[] parts = channelLower.split(":", 2);
+            if (parts.length == 2 && (parts[1].equals("register") || parts[1].equals("unregister"))) {
+                isRegisterChannel = true;
+            }
+        } else {
+            if (channelLower.equals("register") || channelLower.equals("unregister")) {
+                isRegisterChannel = true;
+            }
+        }
+        return isRegisterChannel;
     }
 
     public void handleInvalidPacket(PacketReceiveEvent event) {
