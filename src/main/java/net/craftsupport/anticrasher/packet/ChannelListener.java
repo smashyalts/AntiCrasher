@@ -30,7 +30,7 @@ public class ChannelListener implements PacketListener {
             Player player = event.getPlayer();
 
             String channelLower = channel.toLowerCase();
-            if (!channel.equals(channelLower) || !player.hasPermission("anticrasher.bypass")) {
+            if (!channel.equals(channelLower) && !player.hasPermission("anticrasher.bypass")) {
                 handleInvalidPacket(event);
                 return;
             }
