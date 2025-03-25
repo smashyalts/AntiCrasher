@@ -2,54 +2,62 @@ package net.craftsupport.anticrasher.packet;
 
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
-import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
-import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientClickWindow;
-import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientEditBook;
+import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPluginMessage;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.AntiCrasher;
 import net.craftsupport.anticrasher.utils.Utils;
 import org.bukkit.Bukkit;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import org.bukkit.entity.Player;
+import static org.bukkit.Bukkit.getLogger;
 import java.io.IOException;
 
-import static org.bukkit.Bukkit.getLogger;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-
-public class WindowListener implements PacketListener {
+public class ChannelListener implements PacketListener {
     private final AntiCrasher plugin;
     private final Utils utilsInstance;
-    public WindowListener(final AntiCrasher plugin, Utils util) {
+
+    public ChannelListener(AntiCrasher plugin, Utils util) {
         this.plugin = plugin;
         this.utilsInstance = util;
     }
 
+    @Override
     public void onPacketReceive(PacketReceiveEvent event) {
-        if (event.getServerVersion().isOlderThan(ServerVersion.V_1_20_5)) {
-            if (event.getPacketType() == PacketType.Play.Client.CLICK_WINDOW) {
-                WrapperPlayClientClickWindow click = new WrapperPlayClientClickWindow(event);
-                int clickType = click.getWindowClickType().ordinal();
-                int button = click.getButton();
-                int windowId = click.getWindowId();
-                int slot = click.getSlot();
+        if (event.getPacketType() == PacketType.Play.Client.PLUGIN_MESSAGE) {
+            WrapperPlayClientPluginMessage wrapper = new WrapperPlayClientPluginMessage(event);
+            String channel = wrapper.getChannelName();
+            byte[] data = wrapper.getData();
 
-                if ((clickType == 1 || clickType == 2) && windowId >= 0 && button < 0) {
-                    handleInvalidPacket(event);
-                } else if (windowId >= 0 && clickType == 2 && slot < 0) {
-                    handleInvalidPacket(event);
-                }
+            Player player = event.getPlayer();
+            boolean bypass = player.hasPermission("anticrasher.bypass");
+
+            String channelLower = channel.toLowerCase();
+            if (!channel.equals(channelLower) && !bypass) {
+                handleInvalidPacket(event);
+                return;
             }
 
-            if (event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
-                WrapperPlayClientEditBook editBook = new WrapperPlayClientEditBook(event);
-                if (editBook.getTitle() == null || editBook.getTitle().length() > 32) {
-                    handleInvalidPacket(event);
-                }
+            boolean isRegisterChannel = isRegisterChannel(channelLower);
+
+            if (isRegisterChannel && data.length > 64 && !bypass) {
+                handleInvalidPacket(event);
             }
         }
+    }
+
+    private static boolean isRegisterChannel(String channelLower) {
+        boolean isRegisterChannel = false;
+        if (channelLower.contains(":")) {
+            String[] parts = channelLower.split(":", 2);
+            if (parts.length == 2 && (parts[1].equals("register") || parts[1].equals("unregister"))) {
+                isRegisterChannel = true;
+            }
+        } else {
+            if (channelLower.equals("register") || channelLower.equals("unregister")) {
+                isRegisterChannel = true;
+            }
+        }
+        return isRegisterChannel;
     }
 
     public void handleInvalidPacket(PacketReceiveEvent event) {
@@ -75,4 +83,3 @@ public class WindowListener implements PacketListener {
         }
     }
 }
-
