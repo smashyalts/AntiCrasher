@@ -51,11 +51,7 @@ public class TabCompleteListener implements PacketListener {
         event.getUser().closeConnection();
 
         if (utilsInstance.logToFile) {
-            try {
-                utilsInstance.log(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            utilsInstance.log(event.getUser().getName() + " most likely tried to use a Tab Complete Crash Exploit");
         }
 
         if (utilsInstance.logAttempts) {

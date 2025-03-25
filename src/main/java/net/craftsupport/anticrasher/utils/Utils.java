@@ -35,7 +35,7 @@ public class Utils {
        this.dataFolder = plugin.getDataFolder().getPath();
    }
 
-    public void log(String message) throws IOException {
+    public void log(String message) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(dataFolder + "/LOGS", true));
 

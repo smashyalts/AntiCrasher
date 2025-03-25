@@ -57,11 +57,7 @@ public class WindowListener implements PacketListener {
         event.getUser().closeConnection();
 
         if (utilsInstance.logToFile) {
-            try {
-                utilsInstance.log(event.getUser().getName() + " Tried to use the Crash Exploit");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            utilsInstance.log(event.getUser().getName() + " Tried to use the Crash Exploit");
         }
 
         if (utilsInstance.logAttempts) {
