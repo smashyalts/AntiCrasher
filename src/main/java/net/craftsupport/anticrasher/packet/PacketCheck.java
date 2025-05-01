@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.packet;
 
+import com.github.puregero.multilib.MultiLib;
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -35,7 +36,7 @@ public abstract class PacketCheck implements PacketListener {
 
         if (utils.punishOnAttempt) {
             String replacedString = utils.punishCommand.replace("%player%", event.getUser().getName());
-            Bukkit.getScheduler().runTask(AntiCrasher.getInstance(), () -> {
+            MultiLib.getGlobalRegionScheduler().run(AntiCrasher.getInstance(), (task) -> {
                 if (AntiCrasher.getInstance().isPAPIEnabled()) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(event.getUser().getUUID()), replacedString));
                 } else {

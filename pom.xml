@@ -41,6 +41,10 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>net.craftsupport.anticrasher.bstats</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>com.github.puregero.multilib</pattern>
+                            <shadedPattern>net.craftsupport.anticrasher.multilib</shadedPattern>
+                        </relocation>
                     </relocations>
                 </configuration>
                 <executions>
@@ -87,6 +91,10 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <repository>
+            <id>clojars</id>
+            <url>https://repo.clojars.org</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -132,6 +140,12 @@
             <groupId>com.github.retrooper</groupId>
             <artifactId>packetevents-spigot</artifactId>
             <version>2.7.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.puregero</groupId>
+            <artifactId>multilib</artifactId>
+            <version>1.2.4</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
