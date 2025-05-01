@@ -21,11 +21,12 @@ public class ChannelListener extends PacketCheck {
             String channel = wrapper.getChannelName();
             byte[] data = wrapper.getData();
 
-            User player = event.getPlayer();
+            Player player = event.getPlayer();
             boolean bypass = false;
-            if (player.getConnectionState() == ConnectionState.PLAY) {
-                bypass = ((Player) event.getPlayer()).hasPermission("anticrasher.bypass");
+            if (player != null) {
+                bypass = player.hasPermission("anticrasher.bypass");
             }
+
             String channelLower = channel.toLowerCase();
             if (!channel.equals(channelLower) && !bypass) {
                 fail(event);
