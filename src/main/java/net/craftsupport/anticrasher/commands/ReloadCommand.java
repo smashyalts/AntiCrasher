@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 public class ReloadCommand implements CommandExecutor {
 
     private final AntiCrasher plugin;
-
     public Utils util;
 
     public ReloadCommand(AntiCrasher plugin, Utils util) {
