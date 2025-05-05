@@ -28,7 +28,6 @@ public class AntiCrasher extends JavaPlugin implements Platform {
     private User consoleUser;
 
     protected Flavor flavor;
-    protected PackageIndexer packageIndexer;
 
     public AntiCrasher() {
         instance = this;
@@ -48,7 +47,6 @@ public class AntiCrasher extends JavaPlugin implements Platform {
                         this.getClass().getPackageName()
                 )
         );
-        this.packageIndexer = flavor.reflections;
 
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
         PacketEvents.getAPI().getSettings().reEncodeByDefault(false)

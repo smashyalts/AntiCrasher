@@ -1,0 +1,31 @@
+{
+  "repositories": [
+    "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+  ],
+  "artifacts": [
+    {
+      "groupId": "net.kyori",
+      "artifactId": "adventure-api",
+      "version": "${adventureVersion}",
+      "parseTransitive": true
+    },
+    {
+      "groupId": "net.kyori",
+      "artifactId": "adventure-text-minimessage",
+      "version": "${adventureVersion}",
+      "parseTransitive": true
+    },
+    {
+      "groupId": "net.kyori",
+      "artifactId": "adventure-text-logger-slf4j",
+      "version": "${adventureVersion}",
+      "parseTransitive": true
+    },
+    {
+      "groupId": "org.incendo",
+      "artifactId": "cloud-annotations",
+      "version": "${cloudVersion}",
+      "parseTransitive": false
+    }
+  ]
+}

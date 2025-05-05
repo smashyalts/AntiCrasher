@@ -1,4 +1,4 @@
-package net.craftsupport.anticrasher.paper.command;
+package net.craftsupport.anticrasher.fabric.command;
 
 import info.preva1l.trashcan.flavor.annotations.Configure;
 import info.preva1l.trashcan.flavor.annotations.Service;
@@ -7,41 +7,38 @@ import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.common.command.impl.ReloadCommand;
 import net.craftsupport.anticrasher.common.util.ACLogger;
-import net.craftsupport.anticrasher.paper.AntiCrasher;
-import net.craftsupport.anticrasher.paper.user.PaperUser;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import net.craftsupport.anticrasher.fabric.user.FabricUser;
+import net.minecraft.server.command.ServerCommandSource;
 import org.incendo.cloud.SenderMapper;
 import org.incendo.cloud.annotations.AnnotationParser;
 import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.incendo.cloud.fabric.FabricServerCommandManager;
 import org.incendo.cloud.meta.SimpleCommandMeta;
-import org.incendo.cloud.paper.LegacyPaperCommandManager;
 
 import java.util.UUID;
 
 @Getter
 @Service
-public class PaperCommandHandler {
-    @Getter public static final PaperCommandHandler instance = new PaperCommandHandler();
+public class FabricCommandHandler {
+    @Getter public static final FabricCommandHandler instance = new FabricCommandHandler();
 
-    private LegacyPaperCommandManager<User> manager;
+    private FabricServerCommandManager<User> manager;
     private AnnotationParser<User> annotationParser;
 
     @Configure
     public void initialise() {
-        SenderMapper<CommandSender, User> senderMapper = SenderMapper.create(
-                commandSender -> {
-                    if (commandSender instanceof Player player) {
-                        return AntiCrasherAPI.getInstance().getUserManager().create(player.getUniqueId(), commandSender);
+        SenderMapper<ServerCommandSource, User> senderMapper = SenderMapper.create(
+                serverCommandSource -> {
+                    if (serverCommandSource.isExecutedByPlayer()) {
+                        return AntiCrasherAPI.getInstance().getUserManager().create(serverCommandSource.getPlayer().getUuid(), serverCommandSource);
                     }
 
-                    return new PaperUser(UUID.randomUUID(), commandSender);
+                    return new FabricUser(UUID.randomUUID(), serverCommandSource);
                 },
-                sender -> (CommandSender) sender.getSource()
+                sender -> (ServerCommandSource) sender.getSource()
         );
 
-        this.manager = new LegacyPaperCommandManager<>(
-                AntiCrasher.getInstance(),
+        this.manager = new FabricServerCommandManager<>(
                 ExecutionCoordinator.asyncCoordinator(),
                 senderMapper
         );

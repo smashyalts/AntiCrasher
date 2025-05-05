@@ -32,3 +32,6 @@ permissions:
   anticrasher.notify.updates:
     description: Receive notifications about new updates.
     default: op
+libraries:
+  - org.reflections:reflection:0.10.2
+  - com.google.code.gson:gson:2.13.1

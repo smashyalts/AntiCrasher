@@ -24,7 +24,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: |
+          ./gradlew :paper:build
+          ./gradlew chiseledBuildAndCollect
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4

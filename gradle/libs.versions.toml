@@ -5,6 +5,7 @@ packetevents-version = "2.7.0"
 cloud-version = "2.0.0"
 lombok-version = "1.18.38"
 trashcan-version = "1.0.1"
+adventure-version = "4.21.0"
 
 [libraries]
 configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.0" }
@@ -14,20 +15,26 @@ reflections = { group = "org.reflections", name = "reflections", version = "0.10
 trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
 
 packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
-packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
 
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
 cloud-annotations = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloud-version" }
 cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
+cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
 
-adventure-api = { group = "net.kyori", name = "adventure-api", version = "4.21.0" }
-adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version = "4.21.0" }
-adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version = "4.21.0" }
+adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure-version" }
+adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventure-version" }
+adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version.ref = "adventure-version" }
+
+## Fabric
+libby = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
+fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.1" }
+packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
 
 ## Paper
 paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.21-R0.1-SNAPSHOT" }
 placeholderapi = { group = "me.clip", name = "placeholderapi", version = "2.11.6" }
 multilib = { group = "com.github.puregero", name = "multilib", version = "1.2.4" }
+packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
 
 [bundles]
 cloud-common = [ "cloud-core", "cloud-annotations" ]
@@ -37,3 +44,6 @@ adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-log
 [plugins]
 runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta11" }
+
+# Fabric
+fabric-loom = { id = "fabric-loom", version = "1.10-SNAPSHOT" }
