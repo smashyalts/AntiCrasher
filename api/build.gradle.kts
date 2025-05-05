@@ -1,0 +1,3 @@
+plugins {
+    anticrasher.`common-conventions`
+}

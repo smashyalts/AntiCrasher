@@ -1,0 +1,15 @@
+name: AntiCrasher
+version: "2.0.0"
+main: net.craftsupport.anticrasher.paper.AntiCrasher
+api-version: '1.21'
+softdepend:
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
+  - PlaceholderAPI
+authors: [CraftSupport, RivenBytes, Skullians, RebelMythik, MachineBreaker]
+libraries:
+  - org.reflections:reflections:0.10.2

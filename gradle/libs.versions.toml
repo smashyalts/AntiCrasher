@@ -1,0 +1,38 @@
+[versions]
+plugin-version = "2.0.0"
+
+packetevents-version = "2.7.0"
+cloud-version = "2.0.0"
+lombok-version = "1.18.38"
+trashcan-version = "1.0.1"
+
+[libraries]
+configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.0" }
+gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
+
+trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
+
+packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
+packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
+
+cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
+cloud-annotations = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloud-version" }
+cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
+
+adventure-api = { group = "net.kyori", name = "adventure-api", version = "4.21.0" }
+adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version = "4.21.0" }
+adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version = "4.21.0" }
+
+## Paper
+paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.21-R0.1-SNAPSHOT" }
+placeholderapi = { group = "me.clip", name = "placeholderapi", version = "2.11.6" }
+multilib = { group = "com.github.puregero", name = "multilib", version = "1.2.4" }
+
+[bundles]
+cloud-common = [ "cloud-core", "cloud-annotations" ]
+cloud-paper = [ "cloud-paper", "cloud-annotations" ]
+adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-logger-slf4j" ]
+
+[plugins]
+runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
+shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta11" }
