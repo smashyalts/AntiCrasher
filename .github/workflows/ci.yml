@@ -31,4 +31,4 @@ jobs:
         with:
           name: AntiCrasher-${{ env.version }}+${{ github.run_number }}
           path: |
-            libs/AntiCrasher-paper.jar
+            libs/AntiCrasher-paper-*.jar

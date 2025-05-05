@@ -60,6 +60,8 @@ public abstract class AlertManager {
                     .resolve("logs/violations.log")
                     .toFile();
 
+            logFile.getParentFile().mkdirs();
+
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
                 String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                 String logMessage = String.format("%s - %s failed Check %s [%s].",
