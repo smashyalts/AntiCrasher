@@ -59,13 +59,6 @@ tasks.processResources {
     }
 }
 
-tasks.register<Copy>("buildAndCollect") {
-    group = "build"
-    from(tasks.remapJar.get().archiveFile)
-    into(rootProject.rootDir.resolve("libs/"))
-    dependsOn("build")
-}
-
 fun variables(): Map<String, String> = mapOf(
     "version" to rootProject.version.toString(),
     "adventureVersion" to libs.versions.adventure.version.get(),
