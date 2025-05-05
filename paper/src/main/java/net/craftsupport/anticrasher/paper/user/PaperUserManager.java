@@ -14,6 +14,8 @@ public class PaperUserManager implements UserManager {
 
     @Override
     public User get(UUID uuid) {
+        if (uuid == null) return new PaperUser(UUID.randomUUID(), null);
+
         return userCache.get(uuid);
     }
 

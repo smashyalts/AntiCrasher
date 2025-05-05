@@ -35,5 +35,9 @@ dependencies {
 tasks {
     runServer {
         minecraftVersion("1.21.1")
+
+        downloadPlugins {
+            modrinth("LuckPerms", "v5.4.145-bukkit")
+        }
     }
 }

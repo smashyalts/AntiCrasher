@@ -26,7 +26,7 @@ public class PaperUser extends User {
 
     @Override
     public String getName() {
-        return source.getName();
+        return source != null ? source.getName() : getUniqueId().toString();
     }
 
     @SafeVarargs
@@ -50,7 +50,7 @@ public class PaperUser extends User {
 
     @Override
     public boolean hasPermission(String permissionNode) {
-        return source.hasPermission(permissionNode);
+        return source != null && source.hasPermission(permissionNode);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class PaperUser extends User {
 
     @Override
     public String processPlaceholders(String message) {
-        if (AntiCrasherAPI.getInstance().getPlatform().isPluginEnabled("PlaceholderAPI")) {
+        if (AntiCrasherAPI.getInstance().getPlatform().isPluginEnabled("PlaceholderAPI") && source != null) {
             return PlaceholderAPI.setPlaceholders(asPlayer(), message);
         }
 

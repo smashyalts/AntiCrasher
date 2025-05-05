@@ -46,7 +46,7 @@ public class Config {
                 <exploit_name> - The name of the exploit that was triggered (e.g. Book, PluginMessage, etc.)
                 <exploit_type> - The type of the check that was triggered (e.g. A, B, C, D)
                 <exploit_description> - The description of the exploit that was triggered""")
-            private String alertsFormat = "<dark_red><bold>AntiCrasher<reset> <dark_grey>» <white><player_name> <grey>failed <white><exploit_name><exploit_type> <dark_grey>[Hover]";
+            private String alertsFormat = "<blue><bold>AntiCrasher<reset> <dark_grey>» <red><player_name> <grey>failed <red><exploit_name> <gray>[<red>Type <exploit_type></red>]";
 
             // adding spacing for configs
             @Comment("""

@@ -15,7 +15,7 @@ public class ACLogger {
     }
 
     public static void warn(String message, Object... args) {
-        Component component = miniMessage.deserialize("<#f28f24>$message</#f28f24><reset>");
+        Component component = miniMessage.deserialize("<#f28f24>" + message + "</#f28f24><reset>");
         logger.warn(component, args);
     }
 

@@ -1,4 +1,4 @@
-package net.craftsupport.anticrasher.paper.manager;
+package net.craftsupport.anticrasher.paper.alert;
 
 import com.github.puregero.multilib.MultiLib;
 import info.preva1l.trashcan.flavor.annotations.Configure;

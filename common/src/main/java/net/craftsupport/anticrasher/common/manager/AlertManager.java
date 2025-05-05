@@ -64,7 +64,7 @@ public abstract class AlertManager {
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
                 String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                String logMessage = String.format("%s - %s failed Check %s [%s].",
+                String logMessage = String.format("%s - %s failed check %s [%s].",
                         timestamp,
                         violation.user().getName(),
                         violation.check().getName(),
@@ -82,7 +82,7 @@ public abstract class AlertManager {
 
         Component hoverText = Config.i().getLogging().getChat().getAlertsHoverFormat().stream()
                 .map(each -> TextUtil.text(formatMessage(each, violation)))
-                .reduce(Component.empty(), Component::append);
+                .reduce(Component.empty(), (a, b) -> a.append(b).append(Component.newline()));
         Component formattedMessage = TextUtil.text(formatMessage(Config.i().getLogging().getChat().getAlertsFormat(), violation))
                 .hoverEvent(HoverEvent.showText(hoverText));
 
@@ -108,6 +108,7 @@ public abstract class AlertManager {
         return violation.user().processPlaceholders(message
                 .replace("<player_name>", violation.user().getName())
                 .replace("<exploit_name>", violation.check().getName())
+                .replace("<exploit_type>", violation.check().getType())
                 .replace("<exploit_description>", violation.check().getDescription()));
     }
 }

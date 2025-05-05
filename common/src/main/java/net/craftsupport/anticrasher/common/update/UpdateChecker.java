@@ -35,7 +35,7 @@ public class UpdateChecker {
     public void sendNotification(User user) {
         if (CURRENT_VERSION.compareTo(LATEST_VERSION) >= 0) return;
 
-        user.sendMessage("<dark_red><bold>AntiCrasher<reset> <dark_grey>» <yellow>New version of AntiCrasher available! <grey>Current: <yellow>%s <grey>Latest: <green>%s.".formatted(
+        user.sendMessage("<blue><bold>AntiCrasher<reset> <dark_grey>» <yellow>New version of AntiCrasher available! <grey>Current: <yellow>%s <grey>Latest: <green>%s.".formatted(
                 CURRENT_VERSION,
                 LATEST_VERSION
         ));

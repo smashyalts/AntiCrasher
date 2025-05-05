@@ -9,9 +9,9 @@ import org.incendo.cloud.annotations.Permission;
 public class ReloadCommand {
 
     @Command("reload")
-    @Permission(value = "anticrasher.reload")
+    @Permission(value = "anticrasher.command.reload")
     public void execute(User user) {
-        if (!user.hasPermission("anticrasher.reload")) {
+        if (!user.hasPermission("anticrasher.command.reload")) { // sanity check
             user.sendMessage("<red>You do not have permission to use this command.");
             return;
         }

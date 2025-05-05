@@ -15,6 +15,7 @@ import net.craftsupport.anticrasher.common.manager.CheckManager;
 import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.craftsupport.anticrasher.paper.api.PaperAntiCrasherAPI;
 import net.craftsupport.anticrasher.paper.listener.PlayerEvents;
+import net.craftsupport.anticrasher.paper.user.PaperUser;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +25,7 @@ import java.util.UUID;
 public class AntiCrasher extends JavaPlugin implements Platform {
 
     @Getter public static AntiCrasher instance;
+    private User consoleUser;
 
     protected Flavor flavor;
     protected PackageIndexer packageIndexer;
@@ -66,6 +68,8 @@ public class AntiCrasher extends JavaPlugin implements Platform {
         flavor.startup();
         getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 
+        this.consoleUser = new PaperUser(UUID.randomUUID(), Bukkit.getConsoleSender());
+
         ACLogger.info("AntiCrasher enabled with %s checks enabled.".formatted(CheckManager.getInstance().checks.size()));
     }
 
@@ -95,6 +99,6 @@ public class AntiCrasher extends JavaPlugin implements Platform {
 
     @Override
     public User getConsoleUser() {
-        return AntiCrasherAPI.getInstance().getUserManager().create(UUID.randomUUID(), Bukkit.getConsoleSender());
+        return consoleUser;
     }
 }

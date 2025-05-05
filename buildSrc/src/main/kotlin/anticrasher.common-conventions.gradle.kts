@@ -24,6 +24,7 @@ dependencies {
     versionCatalog(project, "gson", ::compileOnly)
     versionCatalog(project, "packetevents-api", ::compileOnly)
     versionCatalog(project, "trashcan-common", ::implementation)
+    versionCatalog(project, "reflections", ::implementation)
     bundleCatalog(project, "adventure", ::api)
 }
 

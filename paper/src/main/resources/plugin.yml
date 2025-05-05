@@ -11,5 +11,24 @@ softdepend:
   - Geyser-Spigot
   - PlaceholderAPI
 authors: [CraftSupport, RivenBytes, Skullians, RebelMythik, MachineBreaker]
-libraries:
-  - org.reflections:reflections:0.10.2
+commands:
+  anticrasher:
+    description: Root AntiCrasher command
+    permission: anticrasher.command
+    aliases: ["ac"]
+permissions:
+  anticrasher.command:
+    description: Allows the player to use the /anticrasher command
+    default: op
+  anticrasher.command.reload:
+    description: Allows the player to reload configs
+    default: op
+  anticrasher.alerts:
+    description: Receive exploit detection alerts in chat.
+    default: op
+  anticrasher.bypass:
+    description: Bypass all AntiCrasher checks.
+    default: op
+  anticrasher.notify.updates:
+    description: Receive notifications about new updates.
+    default: op

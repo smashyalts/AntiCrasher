@@ -11,7 +11,6 @@ import lombok.Getter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.check.Check;
 import net.craftsupport.anticrasher.api.user.User;
-import net.craftsupport.anticrasher.common.check.impl.channel.ChannelA;
 import net.craftsupport.anticrasher.common.check.impl.chat.ChatA;
 import net.craftsupport.anticrasher.common.check.impl.item.ItemA;
 import net.craftsupport.anticrasher.common.check.impl.item.ItemB;
@@ -57,8 +56,7 @@ public class CheckManager implements PacketListener {
                 new ItemA(),
                 new ItemB(),
                 new ChatA(),
-                new WindowA(),
-                new ChannelA()
+                new WindowA()
         );
     }
 }
