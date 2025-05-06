@@ -42,14 +42,16 @@ public class UpdateChecker {
     }
 
     private Version query() {
-        String ENDPOINT = "https://api.modrinth.com/v2/project/anticrasher/version";
-        try (InputStreamReader reader = new InputStreamReader(new URL(ENDPOINT).openConnection().getInputStream())) {
+        String endpoint = "https://api.modrinth.com/v2/project/anticrasher/version";
+        String platform = AntiCrasherAPI.getInstance().getPlatform().getPlatformType();
+
+        try (InputStreamReader reader = new InputStreamReader(new URL(endpoint).openConnection().getInputStream())) {
 
             JsonArray versions = JsonParser.parseReader(reader).getAsJsonArray();
 
             for (int i = 0; i < versions.size(); i++) {
                 JsonObject version = versions.get(i).getAsJsonObject();
-                if (version.get("version_type").getAsString().equals("release")) {
+                if (version.get("version_type").getAsString().equals("release") && version.get("version_number").getAsString().contains(platform)) {
                     return Version.fromString(version.get("version_number").getAsString());
                 }
             }

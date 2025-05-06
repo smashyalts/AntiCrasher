@@ -8,3 +8,9 @@ stonecutter registerChiseled tasks.register("chiseledBuildAndCollect", stonecutt
     group = "project"
     ofTask("buildAndCollect")
 }
+
+stonecutter registerChiseled tasks.register("chiseledPublish", stonecutter.chiseled) {
+    group = "project"
+    dependsOn("chiseledBuildAndCollect")
+    ofTask("modrinth")
+}

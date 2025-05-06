@@ -39,4 +39,10 @@ public interface Platform {
      * @return The current user of the console.
      */
     User getConsoleUser();
+
+    /**
+     * This is used primarily in update checking.
+     * @return either `plugin` or `mod`.
+     */
+    String getPlatformType();
 }

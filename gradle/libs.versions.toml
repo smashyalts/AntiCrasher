@@ -44,6 +44,7 @@ adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-log
 [plugins]
 runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta11" }
+minotaur = { id = "com.modrinth.minotaur", version = "2.+" }
 
 # Fabric
 fabric-loom = { id = "fabric-loom", version = "1.10-SNAPSHOT" }

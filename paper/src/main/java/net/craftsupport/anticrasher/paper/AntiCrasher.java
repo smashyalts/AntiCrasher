@@ -99,4 +99,9 @@ public class AntiCrasher extends JavaPlugin implements Platform {
     public User getConsoleUser() {
         return consoleUser;
     }
+
+    @Override
+    public String getPlatformType() {
+        return "plugin";
+    }
 }

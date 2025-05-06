@@ -1,4 +1,4 @@
-name: CI
+name: CI and Publish
 
 on:
   workflow_dispatch:
@@ -28,9 +28,17 @@ jobs:
           ./gradlew :paper:build
           ./gradlew chiseledBuildAndCollect
 
+      - name: Publish to Modrinth
+        if: github.branch == 'master'
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          ./gradlew :paper:modrinth
+          ./gradlew :fabric:chiseledPublish
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: AntiCrasher-${{ env.version }}+${{ github.run_number }}
           path: |
-            libs/AntiCrasher-paper-*.jar
+            libs/AntiCrasher-*.jar

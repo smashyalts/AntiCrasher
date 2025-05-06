@@ -77,4 +77,9 @@ public class AntiCrasher implements DedicatedServerModInitializer, Platform {
     public User getConsoleUser() {
         return consoleUser;
     }
+
+    @Override
+    public String getPlatformType() {
+        return "mod";
+    }
 }

@@ -1,8 +1,7 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     anticrasher.`common-conventions`
     alias(libs.plugins.runpaper)
+    alias(libs.plugins.minotaur)
 }
 
 repositories {
@@ -40,4 +39,15 @@ tasks {
             modrinth("LuckPerms", "v5.4.145-bukkit")
         }
     }
+}
+
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("anticrasher")
+    versionNumber.set("v${rootProject.version}-plugin")
+    versionName.set("AntiCrasher Paper ${rootProject.version}")
+    versionType.set("release")
+    uploadFile.set(tasks.shadowJar)
+    gameVersions.addAll("1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4")
+    loaders.addAll(listOf("folia", "paper", "spigot", "bukkit", "purpur"))
 }

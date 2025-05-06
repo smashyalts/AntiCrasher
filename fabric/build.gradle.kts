@@ -1,6 +1,7 @@
 plugins {
     anticrasher.`fabric-conventions`
     alias(libs.plugins.fabric.loom)
+    alias(libs.plugins.minotaur)
 }
 
 class ModDependencies {
@@ -65,7 +66,7 @@ tasks.processResources {
 tasks.register<Copy>("buildAndCollect") {
     group = "build"
     from(tasks.remapJar.get().archiveFile)
-    into(rootProject.buildDir.resolve("./libs"))
+    into(rootProject.rootDir.resolve("libs/"))
     dependsOn("build")
 }
 
@@ -74,3 +75,14 @@ fun variables(): Map<String, String> = mapOf(
     "adventureVersion" to libs.versions.adventure.version.get(),
     "cloudVersion" to libs.versions.cloud.version.get(),
 )
+
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("anticrasher")
+    versionNumber.set("v${rootProject.version}-mod")
+    versionName.set("AntiCrasher Fabric $mcVersion")
+    versionType.set("release")
+    uploadFile.set(tasks.remapJar.get().archiveFile)
+    gameVersions.add(property("mod.mc_version").toString())
+    loaders.add("fabric")
+}
