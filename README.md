@@ -31,7 +31,8 @@ The following exploits are currently patched in this plugin/mod:
 > There is no workaround for this issue at the moment. If you run a Velocity proxy, you can use the proxy version there instead.
 
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=fabric) and place it in the `mods` folder.
-2. Download the latest `fabric-build` package from [Axionize/packetevents](https://github.com/Axionize/packetevents/actions/workflows/gradle-publish.yml?query=branch%3Afix%2Ffabric-events+is%3Asuccess), and place it in the `mods` folder. Restart your server.
+2. Install the latest [Fabric API](https://modrinth.com/mod/fabric-api/versions) for your server.
+3. Download the latest `fabric-build` package from [Axionize/packetevents](https://github.com/Axionize/packetevents/actions/workflows/gradle-publish.yml?query=branch%3Afix%2Ffabric-events+is%3Asuccess), and place it in the `mods` folder. Restart your server.
 
 ## Commands
 - /anticrasher reload - Reloads configs. `anticrasher.command.reload`
