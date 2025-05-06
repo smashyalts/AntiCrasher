@@ -13,17 +13,14 @@ runtask-version = "2.3.1"
 configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.0" }
 gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
 reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections-version" }
-
 trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
-
 packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
 
+## Cloud Common
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
 cloud-annotations = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloud-version" }
-cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
-cloud-velocity = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
-cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
 
+## Adventure
 adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure-version" }
 adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventure-version" }
 adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version.ref = "adventure-version" }
@@ -32,17 +29,20 @@ adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logg
 libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
 fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.1" }
 packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
+cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
 
 # Velocity
 velocity-api = { group = "com.velocitypowered", name = "velocity-api", version = "3.4.0-SNAPSHOT" }
 libby-velocity = { module = "com.alessiodp.libby:libby-velocity", version = "2.0.0-SNAPSHOT" }
 packetevents-velocity = { group = "com.github.retrooper", name = "packetevents-velocity", version.ref = "packetevents-version" }
+cloud-velocity = { group = "org.incendo", name = "cloud-velocitu", version = "2.0.0-beta.10" }
 
 ## Paper
-paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.21-R0.1-SNAPSHOT" }
+paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.13-R0.1-SNAPSHOT" }
 placeholderapi = { group = "me.clip", name = "placeholderapi", version = "2.11.6" }
 multilib = { group = "com.github.puregero", name = "multilib", version = "1.2.4" }
 packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
+cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
 
 [bundles]
 cloud-common = [ "cloud-core", "cloud-annotations" ]
