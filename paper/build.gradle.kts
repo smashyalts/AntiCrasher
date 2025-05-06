@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(libs.spigot.api)
+    compileOnly(libs.paper.api)
     compileOnly(libs.placeholderapi)
     compileOnly(libs.bundles.cloud.paper)
 
