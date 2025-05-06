@@ -7,6 +7,7 @@ lombok-version = "1.18.38"
 trashcan-version = "1.0.1"
 adventure-version = "4.21.0"
 reflections-version = "0.10.2"
+runtask-version = "2.3.1"
 
 [libraries]
 configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.0" }
@@ -20,6 +21,7 @@ packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", 
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
 cloud-annotations = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloud-version" }
 cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
+cloud-velocity = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
 cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
 
 adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure-version" }
@@ -27,9 +29,14 @@ adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minim
 adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version.ref = "adventure-version" }
 
 ## Fabric
-libby = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
+libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
 fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.1" }
 packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
+
+# Velocity
+velocity-api = { group = "com.velocitypowered", name = "velocity-api", version = "3.4.0-SNAPSHOT" }
+libby-velocity = { module = "com.alessiodp.libby:libby-velocity", version = "2.0.0-SNAPSHOT" }
+packetevents-velocity = { group = "com.github.retrooper", name = "packetevents-velocity", version.ref = "packetevents-version" }
 
 ## Paper
 paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.21-R0.1-SNAPSHOT" }
@@ -40,10 +47,13 @@ packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spi
 [bundles]
 cloud-common = [ "cloud-core", "cloud-annotations" ]
 cloud-paper = [ "cloud-paper", "cloud-annotations" ]
+cloud-velocity = [ "cloud-velocity", "cloud-annotations" ]
 adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-logger-slf4j" ]
 
 [plugins]
-runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
+runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runtask-version" }
+runvelocity = { id = "xyz.jpenilla.run-velocity", version.ref = "runtask-version" }
+
 shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta11" }
 minotaur = { id = "com.modrinth.minotaur", version = "2.+" }
 

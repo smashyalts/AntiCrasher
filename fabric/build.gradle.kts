@@ -22,8 +22,8 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${deps["fabric_loader"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${deps["fabric_api"]}")
 
-    implementation(libs.libby)
-    include(libs.libby)
+    implementation(libs.libby.fabric)
+    include(libs.libby.fabric)
 
     val adventurePlatform = "net.kyori:adventure-platform-fabric:${deps["adventure_platform"]}"
     modImplementation(adventurePlatform)

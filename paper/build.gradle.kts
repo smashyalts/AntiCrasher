@@ -24,9 +24,9 @@ repositories {
 dependencies {
     compileOnly(libs.paper.api)
     compileOnly(libs.placeholderapi)
+    compileOnly(libs.bundles.cloud.paper)
 
     api(project(":common"))
-    implementation(libs.bundles.cloud.paper)
     implementation(libs.packetevents.spigot)
     implementation(libs.multilib)
 }

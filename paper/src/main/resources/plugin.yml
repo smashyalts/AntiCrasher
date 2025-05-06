@@ -35,3 +35,4 @@ permissions:
 libraries:
   - org.reflections:reflections:0.10.2
   - com.google.code.gson:gson:2.13.1
+  - org.incendo:cloud-paper:2.0.0-beta.10
