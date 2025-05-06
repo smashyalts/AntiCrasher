@@ -32,7 +32,8 @@
     "java": ">=17",
     "fabric-api": "*",
     "cloud": "*",
-    "fabric-permissions-api-v0": "*"
+    "fabric-permissions-api-v0": "*",
+    "packetevents": "*"
   },
   "suggests": {
     "placeholder-api": "*"

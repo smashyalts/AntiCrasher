@@ -32,4 +32,6 @@ public abstract class User {
     public abstract Object getSource();
 
     public abstract String processPlaceholders(String message);
+
+    public abstract boolean shouldBypass();
 }

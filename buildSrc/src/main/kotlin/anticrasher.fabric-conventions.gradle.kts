@@ -60,6 +60,12 @@ tasks.jar {
     mustRunAfter(":common:jar", ":api:jar")
 
     from({
+        configurations.runtimeClasspath.get().filter { it.name.contains("libby") }.map { zipTree(it) }
+    }) {
+        exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
+    }
+
+    from({
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         configurations.getByName("zipConfig").map { if (it.isDirectory) it else zipTree(it) }
     }) {

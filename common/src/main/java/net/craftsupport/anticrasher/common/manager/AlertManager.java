@@ -96,7 +96,9 @@ public abstract class AlertManager {
 
     private void punish(CheckViolation violation) {
         for (String command : Config.i().getPunishments()) {
-            dispatchCommand(violation.user().processPlaceholders(command));
+            dispatchCommand(violation.user().processPlaceholders(
+                    TextUtil.legacy(command)
+            ));
         }
 
         violation.user().toPE().closeConnection();

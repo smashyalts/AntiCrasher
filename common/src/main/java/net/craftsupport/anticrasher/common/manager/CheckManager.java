@@ -34,17 +34,7 @@ public class CheckManager implements PacketListener {
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         User user = AntiCrasherAPI.getInstance().getUserManager().get(event.getUser().getUUID());
-        if (user != null && user.hasPermission("anticrasher.bypass")) return;
-
-        for (Check check : checks) {
-            check.handle(event, user);
-        }
-    }
-
-    @Override
-    public void onPacketSend(PacketSendEvent event) {
-        User user = AntiCrasherAPI.getInstance().getUserManager().get(event.getUser().getUUID());
-        if (user != null && user.hasPermission("anticrasher.bypass")) return;
+        if (user != null && user.shouldBypass()) return;
 
         for (Check check : checks) {
             check.handle(event, user);

@@ -10,12 +10,13 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 @Service
 public class PlayerListener {
+    public static PlayerListener instance = new PlayerListener();
 
     @Configure
     public void listen() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayerEntity player = handler.getPlayer();
-            User user = AntiCrasherAPI.getInstance().getUserManager().create(player.getUuid(), player);
+            User user = AntiCrasherAPI.getInstance().getUserManager().create(player.getUuid(), player.getCommandSource());
 
             if (user.hasPermission("anticrasher.updates")) {
                 UpdateChecker.getInstance().sendNotification(user);

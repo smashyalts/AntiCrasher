@@ -3,8 +3,10 @@ package net.craftsupport.anticrasher.fabric;
 import info.preva1l.trashcan.Version;
 import lombok.Getter;
 import lombok.Setter;
+import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.Platform;
 import net.craftsupport.anticrasher.api.user.User;
+import net.craftsupport.anticrasher.fabric.api.FabricAntiCrasherAPI;
 import net.craftsupport.anticrasher.fabric.library.LibraryLoader;
 import net.craftsupport.anticrasher.fabric.listener.LifecycleListener;
 import net.craftsupport.anticrasher.fabric.service.ServiceManager;
@@ -25,22 +27,25 @@ public class AntiCrasher implements DedicatedServerModInitializer, Platform {
     public static MinecraftServer server;
 
     public final Logger logger = LoggerFactory.getLogger("AntiCrasher");
-    private final LibraryLoader libraryLoader = new LibraryLoader();
+    @Setter
+    @Getter
     private FabricUser consoleUser;
 
     @Override
     public void onInitializeServer() {
         instance = this;
 
-        libraryLoader.load();
-        ServiceManager.onEnable();
+        AntiCrasherAPI.setInstance(new FabricAntiCrasherAPI());
 
-        this.consoleUser = new FabricUser(UUID.randomUUID(), server.getCommandSource());
+        LibraryLoader libraryLoader = new LibraryLoader();
+        libraryLoader.load();
+
+        ServiceManager.onEnable();
     }
 
     @Override
     public Path getConfigDirectory() {
-        return FabricLoader.getInstance().getConfigDir().resolve("AntiCrasher");
+        return FabricLoader.getInstance().getConfigDir().resolve("anticrasher");
     }
 
     @Override
@@ -71,11 +76,6 @@ public class AntiCrasher implements DedicatedServerModInitializer, Platform {
                 Thread.currentThread().interrupt();
             }
         });
-    }
-
-    @Override
-    public User getConsoleUser() {
-        return consoleUser;
     }
 
     @Override

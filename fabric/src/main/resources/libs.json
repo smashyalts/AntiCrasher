@@ -26,6 +26,18 @@
       "artifactId": "cloud-annotations",
       "version": "${cloudVersion}",
       "parseTransitive": false
+    },
+    {
+      "groupId": "org.reflections",
+      "artifactId": "reflections",
+      "version": "${reflectionsVersion}",
+      "parseTransitive": true
+    },
+    {
+      "groupId": "org.snakeyaml",
+      "artifactId": "snakeyaml-engine",
+      "version": "2.9",
+      "parseTransitive": true
     }
   ]
 }

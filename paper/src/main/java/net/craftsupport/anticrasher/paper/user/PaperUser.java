@@ -18,10 +18,12 @@ import java.util.UUID;
 public class PaperUser extends User {
 
     private final CommandSender source;
+    private final boolean bypass;
 
     public PaperUser(UUID uniqueId, Object source) {
         super(uniqueId);
         this.source = (CommandSender) source;
+        this.bypass = this.source.hasPermission("anticrasher.bypass");
     }
 
     @Override
@@ -65,6 +67,11 @@ public class PaperUser extends User {
         }
 
         return message;
+    }
+
+    @Override
+    public boolean shouldBypass() {
+        return bypass;
     }
 
     private Player asPlayer() {

@@ -48,6 +48,11 @@ public class FabricCommandHandler {
                 params -> SimpleCommandMeta.empty()
         );
 
+        manager.commandBuilder("yo")
+                        .handler(h -> {
+                            System.out.println("wah!!");
+                        });
+
         registerSubCommands();
 
         ACLogger.info("Registered commands.");

@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.common.util;
 
+import io.github.retrooper.packetevents.adventure.serializer.legacy.LegacyComponentSerializer;
 import lombok.experimental.UtilityClass;
 import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.kyori.adventure.text.Component;
@@ -13,6 +14,7 @@ import java.util.List;
 public class TextUtil {
 
     private final MiniMessage miniMessage = MiniMessage.builder().build();
+    private final LegacyComponentSerializer legacyComponentSerializer = LegacyComponentSerializer.builder().build();
 
     @SafeVarargs
     public Component text(String message, Tuple<String, Object>... args) {
@@ -29,5 +31,9 @@ public class TextUtil {
     @SafeVarargs
     public Component text(List<String> message, Tuple<String, Object>... args) {
         return text(String.join("\n", message), args);
+    }
+
+    public String legacy(String message) {
+        return legacyComponentSerializer.serialize(text(message));
     }
 }

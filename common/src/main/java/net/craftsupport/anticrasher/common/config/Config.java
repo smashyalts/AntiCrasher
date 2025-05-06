@@ -67,7 +67,7 @@ public class Config {
             List of commands to run if someone attempts to abuse an exploit.
             Supports PlaceholderAPI placeholders, %player_name% is a built-in placeholder into AntiCrasher.
             Do not include the slash at thew beginning of the command.
-            Supports MiniMessage formatting.""")
+            Supports MiniMessage colour formatting - serialized into legacy section signs (hover etc not functional).""")
     private List<String> punishments = List.of(
             "kick %player_name% <dark_red>Kicked for Exploiting."
     );
