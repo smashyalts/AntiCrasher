@@ -20,9 +20,9 @@ public class FabricAlertManager extends AlertManager {
         try {
             //? if >1.21 {
             CommandDispatcher<ServerCommandSource> dispatcher = AntiCrasher.server.getCommandSource().getDispatcher();
-            //?} elif <1.21 {
-            //CommandDispatcher<ServerCommandSource> dispatcher = AntiCrasher.server.getCommandManager().getDispatcher();
-            //?}
+            //?} elif <=1.21 {
+            /*CommandDispatcher<ServerCommandSource> dispatcher = AntiCrasher.server.getCommandManager().getDispatcher();
+            *///?}
             ParseResults<ServerCommandSource> parseResults = dispatcher.parse(command, AntiCrasher.server.getCommandSource());
 
             dispatcher.execute(parseResults);
