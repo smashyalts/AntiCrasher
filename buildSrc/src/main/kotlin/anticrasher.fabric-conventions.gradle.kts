@@ -53,12 +53,11 @@ tasks {
 }
 
 tasks.jar {
-    dependsOn(":common:jar", ":api:jar")
+    dependsOn(":common:classes", ":api:classes")
+    from(project(":common").sourceSets["main"].output)
+    from(project(":api").sourceSets["main"].output)
 
-    from(project(":common").tasks.named("jar").get().outputs.files)
-    from(project(":api").tasks.named("jar").get().outputs.files)
-    inputs.property("archiveName", "AntiCrasher-fabric-${project.base.archivesName}")
-    inputs.property("archiveFile", rootProject.rootDir.resolve("./libs/AntiCrasher-fabric-${project.base.archivesName}.jar"))
+    mustRunAfter(":common:jar", ":api:jar")
 
     from({
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE

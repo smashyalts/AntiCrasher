@@ -16,7 +16,7 @@ public class PlayerEvents implements Listener {
         Player player = event.getPlayer();
         User user = AntiCrasherAPI.getInstance().getUserManager().create(player.getUniqueId(), player);
 
-        if (player.hasPermission("anticrasher.notify.updates")) {
+        if (player.hasPermission("anticrasher.updates")) {
             UpdateChecker.getInstance().sendNotification(user);
         }
     }

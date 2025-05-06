@@ -17,7 +17,7 @@ public class PlayerListener {
             ServerPlayerEntity player = handler.getPlayer();
             User user = AntiCrasherAPI.getInstance().getUserManager().create(player.getUuid(), player);
 
-            if (user.hasPermission("anticrasher.notify.updates")) {
+            if (user.hasPermission("anticrasher.updates")) {
                 UpdateChecker.getInstance().sendNotification(user);
             }
         });

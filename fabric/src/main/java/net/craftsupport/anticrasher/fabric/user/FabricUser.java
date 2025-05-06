@@ -1,15 +1,14 @@
 package net.craftsupport.anticrasher.fabric.user;
 
 import com.github.retrooper.packetevents.PacketEvents;
-import eu.pb4.placeholders.api.PlaceholderContext;
-import eu.pb4.placeholders.api.Placeholders;
 import me.lucko.fabric.api.permissions.v0.Permissions;
+import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.craftsupport.anticrasher.common.util.TextUtil;
+import net.craftsupport.anticrasher.fabric.util.PlaceholderProcessor;
 import net.kyori.adventure.text.Component;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
 
 import java.util.List;
 import java.util.UUID;
@@ -62,6 +61,10 @@ public class FabricUser extends User {
 
     @Override
     public String processPlaceholders(String message) {
-        return Placeholders.parseText(Text.literal(message), PlaceholderContext.of(source)).getString();
+        if (AntiCrasherAPI.getInstance().getPlatform().isPluginEnabled("placeholder-api")) {
+            return PlaceholderProcessor.processPlaceholders(message, source);
+        }
+
+        return message;
     }
 }

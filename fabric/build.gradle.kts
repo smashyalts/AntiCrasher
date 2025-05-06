@@ -11,6 +11,10 @@ val mcVersion = stonecutter.current.version
 val deps = ModDependencies()
 val modVersion = rootProject.version.toString()
 
+base {
+    archivesName.set("AntiCrasher-fabric-$mcVersion")
+}
+
 dependencies {
     minecraft("com.mojang:minecraft:$mcVersion")
     mappings("net.fabricmc:yarn:$mcVersion+build.${deps["yarn_build"]}:v2")
@@ -24,9 +28,7 @@ dependencies {
     modImplementation(adventurePlatform)
     include(adventurePlatform)
 
-    val papi = "eu.pb4:placeholder-api:${deps["papi"]}"
-    modImplementation(papi)
-    include(papi)
+    modImplementation("eu.pb4:placeholder-api:${deps["papi"]}")
 
     compileOnly(libs.packetevents.fabric)
 
@@ -35,6 +37,7 @@ dependencies {
     compileOnly(libs.cloud.annotations)
 
     api(project(":common"))
+    zipConfig(project(":common"))
 }
 
 loom {
@@ -57,6 +60,13 @@ tasks.processResources {
     filesMatching("**/*.json") {
         expand(tokenMap)
     }
+}
+
+tasks.register<Copy>("buildAndCollect") {
+    group = "build"
+    from(tasks.remapJar.get().archiveFile)
+    into(rootProject.buildDir.resolve("./libs"))
+    dependsOn("build")
 }
 
 fun variables(): Map<String, String> = mapOf(

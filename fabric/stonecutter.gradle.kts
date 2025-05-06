@@ -4,7 +4,7 @@ plugins {
 }
 stonecutter active "1.21.4"
 
-stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) {
+stonecutter registerChiseled tasks.register("chiseledBuildAndCollect", stonecutter.chiseled) {
     group = "project"
-    ofTask("build")
+    ofTask("buildAndCollect")
 }

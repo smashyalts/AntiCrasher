@@ -2,11 +2,11 @@ package net.craftsupport.anticrasher.paper.user;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import lombok.Getter;
-import me.clip.placeholderapi.PlaceholderAPI;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.craftsupport.anticrasher.common.util.TextUtil;
+import net.craftsupport.anticrasher.paper.util.PlaceholderProcessor;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -61,7 +61,7 @@ public class PaperUser extends User {
     @Override
     public String processPlaceholders(String message) {
         if (AntiCrasherAPI.getInstance().getPlatform().isPluginEnabled("PlaceholderAPI") && source != null) {
-            return PlaceholderAPI.setPlaceholders(asPlayer(), message);
+            return PlaceholderProcessor.processPlaceholders(message, asPlayer());
         }
 
         return message;
