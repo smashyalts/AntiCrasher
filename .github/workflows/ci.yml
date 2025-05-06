@@ -26,7 +26,7 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          ./gradlew :paper:build
+          ./gradlew :spigot:build
           ./gradlew :velocity:build
           ./gradlew chiseledBuildAndCollect
 
