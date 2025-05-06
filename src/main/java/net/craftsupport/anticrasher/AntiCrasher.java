@@ -4,7 +4,6 @@ import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import net.craftsupport.anticrasher.commands.ReloadCommand;
 import net.craftsupport.anticrasher.packet.impl.BundleListener;
-import net.craftsupport.anticrasher.packet.impl.ChannelListener;
 import net.craftsupport.anticrasher.packet.impl.TabCompleteListener;
 import net.craftsupport.anticrasher.packet.impl.WindowListener;
 import net.craftsupport.anticrasher.utils.Utils;
@@ -45,7 +44,6 @@ public final class AntiCrasher extends JavaPlugin {
 
         PacketEvents.getAPI().getEventManager().registerListener(new WindowListener(), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().getEventManager().registerListener(new TabCompleteListener(), PacketListenerPriority.LOWEST);
-        PacketEvents.getAPI().getEventManager().registerListener(new ChannelListener(), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().getEventManager().registerListener(new BundleListener(), PacketListenerPriority.LOWEST);
         PacketEvents.getAPI().init();
     }
