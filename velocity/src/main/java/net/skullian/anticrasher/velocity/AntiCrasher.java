@@ -71,6 +71,12 @@ public class AntiCrasher implements Platform {
         instance = this;
 
         PacketEvents.setAPI(VelocityPacketEventsBuilder.build(server, pluginContainer, logger, dataDirectory));
+        PacketEvents.getAPI().getSettings().reEncodeByDefault(false)
+                .checkForUpdates(true)
+                .bStats(true)
+                .kickOnPacketException(true);
+        PacketEvents.getAPI().load();
+        PacketEvents.getAPI().init();
 
         AntiCrasherAPI.setInstance(new VelocityAntiCrasherAPI());
 
@@ -85,6 +91,7 @@ public class AntiCrasher implements Platform {
     @Subscribe
     public void onProxyShutdown(ProxyShutdownEvent event) {
         ServiceManager.onDisable();
+        PacketEvents.getAPI().terminate();
     }
 
     @Override
