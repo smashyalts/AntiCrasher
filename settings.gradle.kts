@@ -1,5 +1,5 @@
 rootProject.name = "AntiCrasher"
-include(":common", ":api", ":paper", ":fabric", ":velocity")
+include(":common", ":api", ":bukkit", ":fabric", ":velocity")
 
 pluginManagement {
     repositories {

@@ -6,6 +6,8 @@ package net.craftsupport.anticrasher.api.event;
 public interface Cancellable extends Event {
 
     /**
+     * A simple method allowing you to see if a given event is cancelled already.
+     *
      * @return true if the event is cancelled, false otherwise.
      */
     boolean isCancelled();

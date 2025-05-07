@@ -2,7 +2,7 @@ package net.craftsupport.anticrasher.api.event;
 
 /**
  * An enum representing the priority of an event.
- * All {@link Subscribe} annotated methods are called in the order of their priority, with LOWEST being the lowest priority and MONITOR being the highest.
+ * All {@link net.craftsupport.anticrasher.api.event.bus.Subscribe} annotated methods are called in the order of their priority, with LOWEST being the lowest priority and MONITOR being the highest.
  */
 public enum EventPriority {
     LOWEST,

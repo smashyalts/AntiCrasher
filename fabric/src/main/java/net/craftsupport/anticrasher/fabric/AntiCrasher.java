@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.Platform;
-import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.fabric.api.FabricAntiCrasherAPI;
 import net.craftsupport.anticrasher.fabric.library.LibraryLoader;
-import net.craftsupport.anticrasher.fabric.listener.LifecycleListener;
 import net.craftsupport.anticrasher.fabric.service.ServiceManager;
 import net.craftsupport.anticrasher.fabric.user.FabricUser;
 import net.fabricmc.api.DedicatedServerModInitializer;
@@ -18,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public class AntiCrasher implements DedicatedServerModInitializer, Platform {

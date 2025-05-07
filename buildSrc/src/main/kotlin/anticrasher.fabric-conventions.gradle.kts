@@ -52,6 +52,7 @@ tasks {
     }
 }
 
+// god, I hate this, but it's the only way to get Fabric to cooperate w/ dependencies
 tasks.jar {
     dependsOn(":common:classes", ":api:classes")
     from(project(":common").sourceSets["main"].output)

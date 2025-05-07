@@ -27,6 +27,8 @@ public abstract class AntiCrasherAPI {
     /**
      * Get the User manager.
      * This facilitates the creation and management of {@link net.craftsupport.anticrasher.api.user.User}s.
+     *
+     * @return The {@link UserManager} instance.
      */
     public abstract UserManager getUserManager();
 
