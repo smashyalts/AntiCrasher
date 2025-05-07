@@ -33,7 +33,6 @@ tasks.processResources {
 }
 
 fun variables(): Map<String, String> = mapOf(
-    "version" to rootProject.version.toString(),
     "adventureVersion" to libs.versions.adventure.version.get(),
     "cloudVersion" to libs.versions.cloud.version.get(),
     "reflectionsVersion" to libs.versions.reflections.version.get(),
