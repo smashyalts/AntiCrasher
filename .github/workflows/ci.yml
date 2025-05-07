@@ -20,9 +20,6 @@ jobs:
           distribution: temurin
           java-version: 21
           cache: 'gradle'
-          cache-dependency-path: |
-            ./.gradle
-            ~/.gradle/caches/modules-2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
