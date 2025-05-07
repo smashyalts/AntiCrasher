@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.craftsupport.anticrasher.bundleCatalog
+import net.craftsupport.anticrasher.libVersionCatalog
 import net.craftsupport.anticrasher.versionCatalog
 
 plugins {
@@ -36,6 +37,14 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.36")
 }
 
+// TODO - HACKY WORKAROUND! find a way to not make gradle make me want to kill myself
+fun variables(): Map<String, String> = mapOf(
+    "version" to rootProject.version.toString(),
+    "adventureVersion" to libVersionCatalog(project, "adventure.version").toString(),
+    "cloudVersion" to libVersionCatalog(project, "cloud.version").toString(),
+    "reflectionsVersion" to libVersionCatalog(project, "reflections.version").toString(),
+)
+
 tasks {
     withType<JavaCompile> {
         options.compilerArgs.add("-parameters")
@@ -44,10 +53,10 @@ tasks {
         options.release = 21
     }
 
-    processResources {
-        val version = rootProject.version.toString()
+    withType<ProcessResources> {
+        val tokenMap = variables()
         filesMatching(listOf("**/*.json", "**/*.yml")) {
-            expand("version" to version)
+            expand(tokenMap)
         }
     }
 

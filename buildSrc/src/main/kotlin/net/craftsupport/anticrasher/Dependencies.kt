@@ -25,9 +25,13 @@ class VersionCatalog(project: Project) {
             { logger.warn("Bundle '$bundleName' not found in version catalog.") }
         )
     }
+
+    fun version(versionName: String) = versionCatalog.findVersion(versionName).get()
 }
 
 fun versionCatalog(project: Project, libName: String, dependency: (Any) -> Dependency?) =
     VersionCatalog(project).dependencyFromCatalog(libName, dependency)
 fun bundleCatalog(project: Project, libName: String, dependency: (Any) -> Dependency?) =
     VersionCatalog(project).bundleFromCatalog(libName, dependency)
+fun libVersionCatalog(project: Project, versionName: String) =
+    VersionCatalog(project).version(versionName)

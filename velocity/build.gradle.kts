@@ -25,18 +25,6 @@ dependencies {
     implementation(libs.libby.velocity)
 }
 
-tasks.processResources {
-    val tokenMap = variables()
-    filesMatching("**/*.json") {
-        expand(tokenMap)
-    }
-}
-
-fun variables(): Map<String, String> = mapOf(
-    "cloudVersion" to libs.versions.cloud.version.get(),
-    "reflectionsVersion" to libs.versions.reflections.version.get(),
-)
-
 val templateSource = file("src/main/templates")
 val templateDest = layout.buildDirectory.dir("generated/sources/templates")
 val generateTemplates = tasks.register<Copy>("generateTemplates") {
