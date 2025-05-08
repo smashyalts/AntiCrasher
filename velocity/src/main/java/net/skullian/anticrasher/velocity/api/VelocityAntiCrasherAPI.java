@@ -25,11 +25,11 @@ public class VelocityAntiCrasherAPI extends AntiCrasherAPI {
 
     @Override
     public UserManager getUserManager() {
-        return null;
+        return userManager;
     }
 
     @Override
     public EventBus getEventBus() {
-        return null;
+        return eventBus;
     }
 }
