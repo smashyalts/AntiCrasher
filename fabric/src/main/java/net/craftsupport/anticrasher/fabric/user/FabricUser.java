@@ -48,8 +48,6 @@ public class FabricUser extends User {
 
     @Override
     public boolean hasPermission(String permissionNode) {
-        System.out.println("PERMISSION NODE: " + permissionNode);
-        System.out.println(Permissions.check(source, permissionNode));
         return source != null && (Permissions.check(source, permissionNode) || source.hasPermissionLevel(3)); // check if OP
     }
 

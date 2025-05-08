@@ -9,8 +9,6 @@ import net.craftsupport.anticrasher.common.command.impl.ReloadCommand;
 import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.craftsupport.anticrasher.fabric.user.FabricUser;
 import net.minecraft.server.command.ServerCommandSource;
-//? if <1.19.2
-/*import net.minecraft.server.network.ServerPlayerEntity;*/
 import org.incendo.cloud.SenderMapper;
 import org.incendo.cloud.annotations.AnnotationParser;
 import org.incendo.cloud.execution.ExecutionCoordinator;
@@ -32,13 +30,9 @@ public class FabricCommandHandler {
         SenderMapper<ServerCommandSource, User> senderMapper = SenderMapper.create(
                 serverCommandSource -> {
 
-                    //? if <1.19.2 {
-                    /*if (serverCommandSource.getEntity() != null && serverCommandSource.getEntity() instanceof ServerPlayerEntity serverPlayerEntity) {
-                    *///?} else {
                     if (serverCommandSource.isExecutedByPlayer()) {
-                    //?}
                         return AntiCrasherAPI.getInstance().getUserManager().create(
-                                /*? <1.19.2 {*//* serverPlayerEntity.getUuid() *//*?} else {*/ serverCommandSource.getPlayer().getUuid() /*?}*/,
+                                serverCommandSource.getPlayer().getUuid(),
                                 serverCommandSource
                         );
                     }
@@ -57,11 +51,6 @@ public class FabricCommandHandler {
                 User.class,
                 params -> SimpleCommandMeta.empty()
         );
-
-        manager.commandBuilder("yo")
-                        .handler(h -> {
-                            System.out.println("wah!!");
-                        });
 
         registerSubCommands();
 

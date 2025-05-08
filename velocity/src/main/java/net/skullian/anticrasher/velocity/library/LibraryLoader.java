@@ -24,14 +24,14 @@ public class LibraryLoader {
         libraryLoader.addMavenCentral();
         LibraryConfig libraryConfig = jsonParser.getLibraryConfig();
 
-        libraryConfig.repositories().forEach(libraryLoader::addRepository);
-        libraryConfig.artifacts().forEach( library -> {
-            String groupId = library.groupId().replace(".", "{}");
+        libraryConfig.getRepositories().forEach(libraryLoader::addRepository);
+        libraryConfig.getArtifacts().forEach( library -> {
+            String groupId = library.getGroupId().replace(".", "{}");
             Library lib = Library.builder()
                     .groupId(groupId)
-                    .artifactId(library.artifactId())
-                    .resolveTransitiveDependencies(library.parseTransitive())
-                    .version(library.version())
+                    .artifactId(library.getArtifactId())
+                    .resolveTransitiveDependencies(library.isParseTransitive())
+                    .version(library.getVersion())
                     .build();
 
             libraryLoader.loadLibrary(lib);
