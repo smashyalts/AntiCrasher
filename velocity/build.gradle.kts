@@ -46,7 +46,7 @@ modrinth {
     versionName.set("AntiCrasher Velocity ${rootProject.version}")
     versionType.set("release")
     uploadFile.set(tasks.shadowJar)
-    gameVersions.addAll("1.21.x", "1.20.x", "1.19.x", "1.18.x", "1.17.x", "1.16.x", "1.15.x", "1.14.x", "1.13.x")
+    gameVersions.addAll("1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4", "1.21.5")
     loaders.add("velocity")
     changelog.set(rootProject.rootDir.resolve(".github/CHANGELOG.md").readText())
 }
