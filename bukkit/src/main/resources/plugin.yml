@@ -1,5 +1,5 @@
 name: AntiCrasher
-version: "2.0.0"
+version: "${version}"
 main: net.craftsupport.anticrasher.bukkit.AntiCrasher
 api-version: '1.17'
 softdepend:
