@@ -2,6 +2,7 @@ package net.craftsupport.anticrasher.bukkit.user;
 
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.api.user.UserManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Map;
@@ -14,14 +15,19 @@ public class BukkitUserManager implements UserManager {
 
     @Override
     public User get(UUID uuid) {
-        if (uuid == null) return new BukkitUser(UUID.randomUUID(), null);
+        if (uuid == null) return new BukkitUser(null, UUID.randomUUID(), null);
 
         return userCache.get(uuid);
     }
 
     @Override
-    public User create(UUID uuid, Object source) {
-        return userCache.computeIfAbsent(uuid, id -> new BukkitUser(id, source));
+    public @NotNull User getOrCreate(com.github.retrooper.packetevents.protocol.player.User user, Object source) {
+        return userCache.containsKey(user.getUUID()) ? get(user.getUUID()) : create(user, source);
+    }
+
+    @Override
+    public User create(com.github.retrooper.packetevents.protocol.player.User user, Object source) {
+        return userCache.computeIfAbsent(user.getUUID(), id -> new BukkitUser(user, id, source));
     }
 
     @Override

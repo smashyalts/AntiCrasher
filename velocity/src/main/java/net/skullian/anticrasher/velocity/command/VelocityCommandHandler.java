@@ -1,5 +1,6 @@
 package net.skullian.anticrasher.velocity.command;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
 import info.preva1l.trashcan.flavor.annotations.Configure;
@@ -17,6 +18,7 @@ import org.incendo.cloud.execution.ExecutionCoordinator;
 import org.incendo.cloud.meta.SimpleCommandMeta;
 import org.incendo.cloud.velocity.VelocityCommandManager;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -32,10 +34,13 @@ public class VelocityCommandHandler {
         SenderMapper<CommandSource, User> senderMapper = SenderMapper.create(
                 commandSource -> {
                     if (commandSource instanceof Player player) {
-                        return AntiCrasherAPI.getInstance().getUserManager().create(player.getUniqueId(), commandSource);
+                        return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
+                                PacketEvents.getAPI().getPlayerManager().getUser(player),
+                                player
+                        ));
                     }
 
-                    return new VelocityUser(UUID.randomUUID(), commandSource);
+                    return new VelocityUser(null, UUID.randomUUID(), commandSource);
                 },
                 sender -> (CommandSource) sender.getSource()
         );

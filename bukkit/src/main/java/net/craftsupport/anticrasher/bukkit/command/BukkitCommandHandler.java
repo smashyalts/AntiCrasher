@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.bukkit.command;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.flavor.annotations.Configure;
 import info.preva1l.trashcan.flavor.annotations.Service;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import org.incendo.cloud.execution.ExecutionCoordinator;
 import org.incendo.cloud.meta.SimpleCommandMeta;
 import org.incendo.cloud.paper.LegacyPaperCommandManager;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -32,10 +34,13 @@ public class BukkitCommandHandler {
         SenderMapper<CommandSender, User> senderMapper = SenderMapper.create(
                 commandSender -> {
                     if (commandSender instanceof Player player) {
-                        return AntiCrasherAPI.getInstance().getUserManager().create(player.getUniqueId(), commandSender);
+                        return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
+                                PacketEvents.getAPI().getPlayerManager().getUser(player),
+                                player
+                        ));
                     }
 
-                    return new BukkitUser(UUID.randomUUID(), commandSender);
+                    return new BukkitUser(null, UUID.randomUUID(), commandSender);
                 },
                 sender -> (CommandSender) sender.getSource()
         );

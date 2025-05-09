@@ -5,18 +5,18 @@ import net.craftsupport.anticrasher.common.config.Config;
 import org.incendo.cloud.annotations.Command;
 import org.incendo.cloud.annotations.Permission;
 
-@Command("anticrasher|ac")
+@Command("ac")
 public class ReloadCommand {
 
     @Command("reload")
     @Permission(value = "anticrasher.command.reload")
     public void execute(User user) {
         if (!user.hasPermission("anticrasher.command.reload")) { // sanity check
-            user.sendMessage("<red>You do not have permission to use this command.");
+            user.sendMessage("<blue><bold>AntiCrasher<reset> <dark_grey>» <red>You do not have permission to use this command.");
             return;
         }
 
         Config.reload();
-        user.sendMessage("<green>AntiCrasher configuration reloaded.");
+        user.sendMessage("<blue><bold>AntiCrasher<reset> <dark_grey>» <green>AntiCrasher configuration reloaded.");
     }
 }

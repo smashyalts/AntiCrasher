@@ -35,7 +35,7 @@ The following exploits are currently patched in this plugin/mod:
 3. Download the latest `fabric-build` package from [Axionize/packetevents](https://github.com/Axionize/packetevents/actions/workflows/gradle-publish.yml?query=branch%3Afix%2Ffabric-events+is%3Asuccess), and place it in the `mods` folder. Restart your server.
 
 ## Commands
-- /anticrasher reload - Reloads configs. `anticrasher.command.reload`
+- /ac reload - Reloads configs. `anticrasher.command.reload`
 
 ## Permissions
 - `anticrasher.alerts` - Receive alerts when a player attempts to run an exploit.

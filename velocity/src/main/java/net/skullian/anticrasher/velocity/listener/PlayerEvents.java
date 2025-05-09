@@ -1,5 +1,6 @@
 package net.skullian.anticrasher.velocity.listener;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
 import com.velocitypowered.api.event.connection.LoginEvent;
@@ -13,7 +14,10 @@ public class PlayerEvents {
     public void onPlayerJoin(LoginEvent event) {
         User user = AntiCrasherAPI.getInstance().getUserManager().get(event.getPlayer().getUniqueId());
         if (user == null)
-            user = AntiCrasherAPI.getInstance().getUserManager().create(event.getPlayer().getUniqueId(), event.getPlayer());
+            user = AntiCrasherAPI.getInstance().getUserManager().create(
+                    PacketEvents.getAPI().getPlayerManager().getUser(event.getPlayer()),
+                    event.getPlayer()
+            );
 
         if (user.hasPermission("anticrasher.updates")) {
             UpdateChecker.getInstance().sendNotification(user);

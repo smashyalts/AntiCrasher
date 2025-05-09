@@ -15,12 +15,6 @@ import java.util.UUID;
 @Getter
 public abstract class User {
 
-    private final UUID uniqueId;
-
-    public User(UUID uniqueId) {
-        this.uniqueId = uniqueId;
-    }
-
     /**
      * Gets the name of the user.
      * This is typically the username of the user, unless they are in the Configuration phase where it will return the UUID string.
@@ -85,4 +79,9 @@ public abstract class User {
      * @return Whether the user should bypass the checks or not.
      */
     public abstract boolean shouldBypass();
+
+    /**
+     * Get the {@link UUID} of the user.
+     */
+    public abstract UUID getUniqueId();
 }

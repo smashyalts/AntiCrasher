@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.fabric.command;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.flavor.annotations.Configure;
 import info.preva1l.trashcan.flavor.annotations.Service;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import org.incendo.cloud.execution.ExecutionCoordinator;
 import org.incendo.cloud.fabric.FabricServerCommandManager;
 import org.incendo.cloud.meta.SimpleCommandMeta;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -31,13 +33,13 @@ public class FabricCommandHandler {
                 serverCommandSource -> {
 
                     if (serverCommandSource.isExecutedByPlayer()) {
-                        return AntiCrasherAPI.getInstance().getUserManager().create(
-                                serverCommandSource.getPlayer().getUuid(),
-                                serverCommandSource
-                        );
+                        return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
+                                PacketEvents.getAPI().getPlayerManager().getUser(serverCommandSource.getPlayer()),
+                                serverCommandSource.getPlayer()
+                        ));
                     }
 
-                    return new FabricUser(UUID.randomUUID(), serverCommandSource);
+                    return new FabricUser(null, UUID.randomUUID(), serverCommandSource);
                 },
                 sender -> (ServerCommandSource) sender.getSource()
         );

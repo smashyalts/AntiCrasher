@@ -14,6 +14,8 @@ public abstract class PacketCheck extends Check {
 
     @Override
     public void fail(ProtocolPacketEvent event, User user) {
+        event.setCancelled(true);
+
         AlertManager.getInstance().fail(new CheckViolation(
                 getCheckInfo(),
                 user,

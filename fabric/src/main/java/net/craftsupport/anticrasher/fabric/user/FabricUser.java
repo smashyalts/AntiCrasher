@@ -15,11 +15,16 @@ import java.util.UUID;
 
 public class FabricUser extends User {
 
+    private final com.github.retrooper.packetevents.protocol.player.User user;
+    private final UUID uuid;
+
     private final ServerCommandSource source;
     private final boolean bypass;
 
-    public FabricUser(UUID uniqueId, Object source) {
-        super(uniqueId);
+    public FabricUser(com.github.retrooper.packetevents.protocol.player.User user, UUID uuid, Object source) {
+        this.user = user;
+        this.uuid = uuid;
+
         this.source = (ServerCommandSource) source;
         this.bypass = source != null && Permissions.check(this.source, "anticrasher.bypass");
     }
@@ -29,14 +34,16 @@ public class FabricUser extends User {
         return source != null ? source.getName() : getUniqueId().toString();
     }
 
+    @SafeVarargs
     @Override
-    public void sendMessage(String message, Tuple<String, Object>... args) {
+    public final void sendMessage(String message, Tuple<String, Object>... args) {
         String parsedMessage = processPlaceholders(message);
         source.sendMessage(TextUtil.text(parsedMessage, args));
     }
 
+    @SafeVarargs
     @Override
-    public void sendMessage(List<String> messages, Tuple<String, Object>... args) {
+    public final void sendMessage(List<String> messages, Tuple<String, Object>... args) {
         List<String> parsedMessages = messages.stream().map(this::processPlaceholders).toList();
         source.sendMessage(TextUtil.text(parsedMessages, args));
     }
@@ -53,7 +60,7 @@ public class FabricUser extends User {
 
     @Override
     public com.github.retrooper.packetevents.protocol.player.User toPE() {
-        return PacketEvents.getAPI().getPlayerManager().getUser(getUniqueId());
+        return user;
     }
 
     @Override
@@ -73,5 +80,10 @@ public class FabricUser extends User {
     @Override
     public boolean shouldBypass() {
         return bypass;
+    }
+
+    @Override
+    public UUID getUniqueId() {
+        return uuid;
     }
 }

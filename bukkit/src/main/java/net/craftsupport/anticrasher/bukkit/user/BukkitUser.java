@@ -1,6 +1,5 @@
 package net.craftsupport.anticrasher.bukkit.user;
 
-import com.github.retrooper.packetevents.PacketEvents;
 import lombok.Getter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
@@ -17,13 +16,18 @@ import java.util.UUID;
 @Getter
 public class BukkitUser extends User {
 
+    private final com.github.retrooper.packetevents.protocol.player.User user;
+    private final UUID uuid;
+
     private final CommandSender source;
     private final boolean bypass;
 
-    public BukkitUser(UUID uniqueId, Object source) {
-        super(uniqueId);
+    public BukkitUser(com.github.retrooper.packetevents.protocol.player.User user, UUID uuid, Object source) {
+        this.user = user;
+        this.uuid = uuid;
+
         this.source = (CommandSender) source;
-        this.bypass = this.source.hasPermission("anticrasher.bypass");
+        this.bypass = this.source != null && this.source.hasPermission("anticrasher.bypass");
     }
 
     @Override
@@ -57,7 +61,7 @@ public class BukkitUser extends User {
 
     @Override
     public com.github.retrooper.packetevents.protocol.player.User toPE() {
-        return PacketEvents.getAPI().getPlayerManager().getUser(getUniqueId());
+        return user;
     }
 
     @Override
@@ -72,6 +76,11 @@ public class BukkitUser extends User {
     @Override
     public boolean shouldBypass() {
         return bypass;
+    }
+
+    @Override
+    public UUID getUniqueId() {
+        return uuid;
     }
 
     private Player asPlayer() {

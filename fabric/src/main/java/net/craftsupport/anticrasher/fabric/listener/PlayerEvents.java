@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.fabric.listener;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.flavor.annotations.Configure;
 import info.preva1l.trashcan.flavor.annotations.Service;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
@@ -16,7 +17,9 @@ public class PlayerEvents {
     public void listen() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayerEntity player = handler.getPlayer();
-            User user = AntiCrasherAPI.getInstance().getUserManager().create(player.getUuid(), player.getCommandSource());
+            User user = AntiCrasherAPI.getInstance().getUserManager().create(
+                    PacketEvents.getAPI().getPlayerManager().getUser(player),
+                    player.getCommandSource());
 
             if (user.hasPermission("anticrasher.updates")) {
                 UpdateChecker.getInstance().sendNotification(user);

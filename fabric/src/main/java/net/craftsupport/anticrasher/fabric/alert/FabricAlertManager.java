@@ -27,7 +27,7 @@ public class FabricAlertManager extends AlertManager {
 
             dispatcher.execute(parseResults);
         } catch (CommandSyntaxException error) {
-            throw new RuntimeException("Failed to dispatch command: " + command, error);
+            AntiCrasher.instance.logger.info("Failed to dispatch command [%s] - %s".formatted(command, error.getMessage()));
         }
     }
 

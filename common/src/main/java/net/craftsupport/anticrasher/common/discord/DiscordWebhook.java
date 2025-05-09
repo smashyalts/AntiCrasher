@@ -20,10 +20,10 @@ import java.util.Set;
  * Class used to execute Discord Webhooks with low effort
  * Source: <a href="https://gist.github.com/k3kdude/fba6f6b37594eae3d6f9475330733bdb">k3kdude gist</a>
  */
+@Getter @Setter
 public class DiscordWebhook {
 
     private final String url;
-    @Setter
     private String content;
     private String username;
     private String avatarUrl;
