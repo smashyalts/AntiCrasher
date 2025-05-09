@@ -50,4 +50,5 @@ modrinth {
     uploadFile.set(tasks.shadowJar)
     gameVersions.addAll("1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4")
     loaders.addAll(listOf("folia", "paper", "spigot", "bukkit", "purpur"))
+    changelog.set(rootProject.rootDir.resolve(".github/CHANGELOG.md").readText())
 }

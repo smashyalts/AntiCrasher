@@ -86,4 +86,9 @@ modrinth {
     uploadFile.set(tasks.remapJar.get().archiveFile)
     gameVersions.add(property("mod.mc_version").toString())
     loaders.add("fabric")
+    changelog.set(rootProject.rootDir.resolve(".github/CHANGELOG.md").readText())
+
+    dependencies {
+        required.project("fabric-api")
+    }
 }

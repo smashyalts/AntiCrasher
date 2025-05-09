@@ -11,6 +11,7 @@ softdepend:
   - Geyser-Spigot
   - PlaceholderAPI
 authors: [CraftSupport, RivenBytes, Skullians, RebelMythik, MachineBreaker]
+folia-supported: true
 commands:
   anticrasher:
     description: Root AntiCrasher command
