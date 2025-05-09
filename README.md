@@ -3,7 +3,7 @@
     <div>
         <a href="https://modrinth.com/plugin/anticrasher/versions">Download</a>
         <span> | </span>
-        <a href="https://github.com/smashyalts/AntiCrasher/actions/workflows/ci.yml?query=branch%3Amaster+is%3Asuccess">Dev Builds</a>
+        <a href="https://github.com/smashyalts/AntiCrasher/actions/workflows/ci.yml?query=branch%3Adev+is%3Asuccess">Dev Builds</a>
         <span> | </span>
         <a href="https://github.com/smashyalts/AntiCrasher/issues">Issues</a>
         <span> | </span>
