@@ -1,0 +1,62 @@
+[versions]
+plugin-version = "2.0.0"
+
+packetevents-version = "2.7.0"
+cloud-version = "2.0.0"
+lombok-version = "1.18.38"
+trashcan-version = "1.0.1"
+adventure-version = "4.21.0"
+reflections-version = "0.10.2"
+runtask-version = "2.3.1"
+
+[libraries]
+configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.0" }
+gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
+reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections-version" }
+trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
+packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
+
+## Cloud Common
+cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
+cloud-annotations = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloud-version" }
+
+## Adventure
+adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure-version" }
+adventure-text-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventure-version" }
+adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logger-slf4j", version.ref = "adventure-version" }
+
+## Fabric
+libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
+fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.1" }
+packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
+cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
+
+# Velocity
+velocity-api = { group = "com.velocitypowered", name = "velocity-api", version = "3.4.0-SNAPSHOT" }
+libby-velocity = { module = "com.alessiodp.libby:libby-velocity", version = "2.0.0-SNAPSHOT" }
+packetevents-velocity = { group = "com.github.retrooper", name = "packetevents-velocity", version.ref = "packetevents-version" }
+cloud-velocity = { group = "org.incendo", name = "cloud-velocity", version = "2.0.0-beta.10" }
+
+## Paper
+paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.17-R0.1-SNAPSHOT" }
+placeholderapi = { group = "me.clip", name = "placeholderapi", version = "2.11.6" }
+multilib = { group = "com.github.puregero", name = "multilib", version = "1.2.4" }
+packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
+cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
+
+[bundles]
+cloud-common = [ "cloud-core", "cloud-annotations" ]
+cloud-paper = [ "cloud-paper", "cloud-annotations" ]
+cloud-velocity = [ "cloud-velocity", "cloud-annotations" ]
+adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-logger-slf4j" ]
+
+[plugins]
+runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runtask-version" }
+runvelocity = { id = "xyz.jpenilla.run-velocity", version.ref = "runtask-version" }
+
+shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta11" }
+minotaur = { id = "com.modrinth.minotaur", version = "2.+" }
+idea = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.10" }
+
+# Fabric
+fabric-loom = { id = "fabric-loom", version = "1.10-SNAPSHOT" }

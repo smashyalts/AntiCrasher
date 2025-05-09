@@ -1,0 +1,40 @@
+name: AntiCrasher
+version: "${version}"
+main: net.craftsupport.anticrasher.bukkit.AntiCrasher
+api-version: '1.17'
+softdepend:
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
+  - PlaceholderAPI
+authors: [CraftSupport, RivenBytes, Skullians, RebelMythik, MachineBreaker]
+folia-supported: true
+commands:
+  anticrasher:
+    description: Root AntiCrasher command
+    permission: anticrasher.command
+    aliases: ["ac"]
+permissions:
+  anticrasher.command:
+    description: Allows the player to use the /anticrasher command
+    default: op
+  anticrasher.command.reload:
+    description: Allows the player to reload configs
+    default: op
+  anticrasher.alerts:
+    description: Receive exploit detection alerts in chat.
+    default: op
+  anticrasher.bypass:
+    description: Bypass all AntiCrasher checks.
+    default: op
+  anticrasher.updates:
+    description: Receive notifications about new updates.
+    default: op
+libraries:
+  - org.reflections:reflections:0.10.2
+  - com.google.code.gson:gson:2.13.1
+  - org.incendo:cloud-paper:2.0.0-beta.10
+  - org.incendo:cloud-annotations:2.0.0

@@ -1,7 +1,0 @@
-log-attempts: false
-# Set log-attempts to true if u want to log every attempt to use the exploit in console
-log-to-file: false
-# Set log-to-file to true to make it log exploit attempts to a file called LOGS in the same folder as this file
-punish-command: ""
-# Command to run if someone attempts to abuse the exploit, supports PAPI placeholders, don't include the slash in the command, use %player% for to target the player if you don't have PlaceholderAPI or the Player expansion for it
-punish-on-attempt: false

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "anticrasher",
+  "version": "${version}",
+  "name": "AntiCrasher",
+  "description": "A companion mod that patches exploits.",
+  "authors": [
+    "Skullians",
+    "RivenBytes",
+    "CraftSupport",
+    "RebelMythik",
+    "MachineBreaker"
+  ],
+  "contact": {
+    "homepage": "https://github.com/smashyalts/AntiCrasher/",
+    "sources": "https://github.com/smashyalts/AntiCrasher/"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/anticrasher/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "net.craftsupport.anticrasher.fabric.AntiCrasher"
+    ]
+  },
+  "mixins": [
+    "anticrasher.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.9",
+    "minecraft": ">=1.19.2",
+    "java": ">=17",
+    "fabric-api": "*",
+    "cloud": "*",
+    "fabric-permissions-api-v0": "*",
+    "packetevents": "*"
+  },
+  "suggests": {
+    "placeholder-api": "*"
+  }
+}
