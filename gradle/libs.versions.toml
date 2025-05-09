@@ -29,7 +29,7 @@ adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logg
 libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
 fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.1" }
 packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
-cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
+cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.10" }
 
 # Velocity
 velocity-api = { group = "com.velocitypowered", name = "velocity-api", version = "3.4.0-SNAPSHOT" }
