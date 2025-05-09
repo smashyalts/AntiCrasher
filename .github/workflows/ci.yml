@@ -37,7 +37,7 @@ jobs:
         run: |
           ./gradlew :bukkit:modrinth
           ./gradlew :velocity:modrinth
-          ./gradlew :fabric:chiseledPublish
+          ./gradlew chiseledPublish
 
       - name: Publish API
         if: github.ref_name == 'master'
