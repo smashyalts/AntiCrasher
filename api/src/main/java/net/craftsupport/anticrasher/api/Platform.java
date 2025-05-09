@@ -42,7 +42,7 @@ public interface Platform {
 
     /**
      * This is used primarily in update checking.
-     * @return either `plugin` or `mod`.
+     * @return either `plugin` or `mod` or `proxy`.
      */
     String getPlatformType();
 }

@@ -29,11 +29,13 @@ public class UpdateChecker {
         CompletableFuture.supplyAsync(this::query).thenAccept(latestVersion -> {
             LATEST_VERSION = latestVersion;
             AntiCrasherAPI.getInstance().getPlatform().runLater(() -> sendNotification(AntiCrasherAPI.getInstance().getPlatform().getConsoleUser()), 60L);
+        }).exceptionally(ex -> {
+            throw new RuntimeException(ex);
         });
     }
 
     public void sendNotification(User user) {
-        if (LATEST_VERSION != null && CURRENT_VERSION.compareTo(LATEST_VERSION) >= 0) return;
+        if (LATEST_VERSION == null || CURRENT_VERSION.compareTo(LATEST_VERSION) >= 0) return;
 
         user.sendMessage("<blue><bold>AntiCrasher<reset> <dark_grey>» <yellow>New version of AntiCrasher available! <grey>Current: <yellow>%s <grey>Latest: <green>%s.".formatted(
                 CURRENT_VERSION,
@@ -46,13 +48,14 @@ public class UpdateChecker {
         String platform = AntiCrasherAPI.getInstance().getPlatform().getPlatformType();
 
         try (InputStreamReader reader = new InputStreamReader(new URL(endpoint).openConnection().getInputStream())) {
-
             JsonArray versions = JsonParser.parseReader(reader).getAsJsonArray();
 
             for (int i = 0; i < versions.size(); i++) {
                 JsonObject version = versions.get(i).getAsJsonObject();
-                if (version.get("version_type").getAsString().equals("release") && version.get("version_number").getAsString().contains(platform)) {
-                    return Version.fromString(version.get("version_number").getAsString());
+                if (version.get("version_type").getAsString().equals("release")
+                        && version.get("version_number").getAsString().contains(platform)) {
+                    return Version.fromString(version.get("version_number").getAsString()
+                            .replaceAll(String.format("^v|\\-%s$", platform), ""));
                 }
             }
         } catch (IOException e) {
