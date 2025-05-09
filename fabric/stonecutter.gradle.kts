@@ -11,6 +11,6 @@ stonecutter registerChiseled tasks.register("chiseledBuildAndCollect", stonecutt
 
 stonecutter registerChiseled tasks.register("chiseledPublish", stonecutter.chiseled) {
     group = "project"
-    dependsOn("chiseledBuildAndCollect")
+    ofTask("buildAndCollect")
     ofTask("modrinth")
 }

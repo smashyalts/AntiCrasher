@@ -78,7 +78,7 @@ fun variables(): Map<String, String> = mapOf(
 )
 
 modrinth {
-    token.set(System.getenv("MODRINTH_TOKEN"))
+    token.set(properties["MODRINTH_TOKEN"]?.toString() ?: System.getenv("MODRINTH_TOKEN"))
     projectId.set("anticrasher")
     versionNumber.set("v${rootProject.version}-mod")
     versionName.set("AntiCrasher Fabric $mcVersion")
