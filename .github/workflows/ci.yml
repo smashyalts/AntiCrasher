@@ -41,6 +41,9 @@ jobs:
 
       - name: Publish API
         if: github.branch == 'master'
+        env:
+          repository_username: ${{ secrets.REPOSITORY_USERNAME }}
+          repository_password: ${{ secrets.REPOSITORY_PASSWORD }}
         run: |
           ./gradlew :api:publish
 
