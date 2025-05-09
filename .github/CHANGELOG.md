@@ -1,16 +1,9 @@
-# 🚀 AntiCrasher v2.0.0
-Meet AntiCrasher v2.0.0, bringing QOL improvements, Fabric support and Velocity support!
+# 🚀 AntiCrasher v2.0.1
+A small bug-fix, resolving an issue with update checking.
 
 ## Changelog
-- Added Fabric Support (Versions between 1.19.4 and 1.21.4)
-- Added Velocity Support
-- Re-introduced 1.17+ support for Bukkit platforms
-- Ensured Folia support
-- Better project structure
-- Config improvements
-  - Discord Webhook alerts
-  - Player chat alerts
-  - Better file logging
+- Fixed update checking
+- Updated javadoc
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:
