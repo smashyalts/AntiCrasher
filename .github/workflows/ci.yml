@@ -31,7 +31,7 @@ jobs:
           ./gradlew chiseledBuildAndCollect
 
       - name: Publish to Modrinth
-        if: github.branch == 'master'
+        if: github.ref_name == 'master'
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
@@ -40,7 +40,7 @@ jobs:
           ./gradlew :fabric:chiseledPublish
 
       - name: Publish API
-        if: github.branch == 'master'
+        if: github.ref_name == 'master'
         env:
           repository_username: ${{ secrets.REPOSITORY_USERNAME }}
           repository_password: ${{ secrets.REPOSITORY_PASSWORD }}
@@ -50,6 +50,6 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: AntiCrasher-${{ env.version }}+${{ github.run_number }}
+          name: AntiCrasher-${{ github.run_number }}
           path: |
             libs/AntiCrasher-*.jar
