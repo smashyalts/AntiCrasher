@@ -11,6 +11,7 @@ import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import info.preva1l.trashcan.Version;
+import io.github.retrooper.packetevents.bstats.velocity.Metrics;
 import io.github.retrooper.packetevents.velocity.factory.VelocityPacketEventsBuilder;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,17 +54,20 @@ public class AntiCrasher implements Platform {
     public final Logger logger;
     @Getter private final PluginContainer pluginContainer;
     private final Path dataDirectory;
+    private final Metrics.Factory metricsFactory;
 
     @Setter
     @Getter
     private VelocityUser consoleUser;
 
+
     @Inject
-    public AntiCrasher(ProxyServer server, Logger logger, PluginContainer pluginContainer, @DataDirectory Path dataDirectory) {
+    public AntiCrasher(ProxyServer server, Logger logger, PluginContainer pluginContainer, @DataDirectory Path dataDirectory, Metrics.Factory metricsFactory) {
         this.server = server;
         this.logger = logger;
         this.pluginContainer = pluginContainer;
         this.dataDirectory = dataDirectory;
+        this.metricsFactory = metricsFactory;
     }
 
     @Subscribe
@@ -79,6 +83,7 @@ public class AntiCrasher implements Platform {
         PacketEvents.getAPI().init();
 
         AntiCrasherAPI.setInstance(new VelocityAntiCrasherAPI());
+        metricsFactory.make(this, 20218);
 
         LibraryLoader libraryLoader = new LibraryLoader();
         libraryLoader.load();

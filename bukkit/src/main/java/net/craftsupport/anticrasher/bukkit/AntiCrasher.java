@@ -5,6 +5,7 @@ import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.Version;
 import info.preva1l.trashcan.flavor.Flavor;
 import info.preva1l.trashcan.flavor.FlavorOptions;
+import io.github.retrooper.packetevents.bstats.bukkit.Metrics;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
@@ -61,6 +62,9 @@ public class AntiCrasher extends JavaPlugin implements Platform {
         ACLogger.info("Enabling AntiCrasher...");
         PacketEvents.getAPI().init();
         AntiCrasherAPI.setInstance(new BukkitAntiCrasherAPI());
+
+        ACLogger.info("Initialising Metrics.");
+        new Metrics(this, 20218);
 
         flavor.startup();
         getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
