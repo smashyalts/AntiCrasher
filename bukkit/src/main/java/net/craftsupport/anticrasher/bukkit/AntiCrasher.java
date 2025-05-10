@@ -62,6 +62,9 @@ public class AntiCrasher extends JavaPlugin implements Platform {
         PacketEvents.getAPI().init();
         AntiCrasherAPI.setInstance(new BukkitAntiCrasherAPI());
 
+        ACLogger.info("Initialising Metrics.");
+        new Metrics(this, 20218);
+
         flavor.startup();
         getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 
