@@ -1,5 +1,5 @@
 [versions]
-plugin-version = "2.0.1"
+plugin-version = "2.0.2"
 
 packetevents-version = "2.7.0"
 cloud-version = "2.0.0"
