@@ -1,9 +1,8 @@
-# 🚀 AntiCrasher v2.0.1
-A small bug-fix, resolving an issue with update checking.
+# 🚀 AntiCrasher v2.0.2
+A small bug-fix where bStats Metrics would not be initialised for Bukkit and Velocity.
 
 ## Changelog
-- Fixed update checking
-- Updated javadoc
+- Initialised Metrics
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:
@@ -17,9 +16,7 @@ The following exploits are currently patched in this plugin/mod:
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=spigot&l=purpur&l=paper&l=bukkit&l=folia) and place it in the `plugins` folder. Restart the server/proxy.
 
 ### Fabric
->[!WARNING]
-> PacketEvents Fabric is currently broken for online mode servers running 1.20.4 and onwards.
-> There is no workaround for this issue at the moment. If you run a Velocity proxy, you can use the proxy version there instead.
+**WARNING** - PacketEvents Fabric is currently broken for online mode servers running 1.20.4 and onwards. There is no workaround for this issue at the moment. If you run a Velocity proxy, you can use the proxy version there instead.
 
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=fabric) and place it in the `mods` folder.
 2. Install the latest [Fabric API](https://modrinth.com/mod/fabric-api/versions) for your server.
