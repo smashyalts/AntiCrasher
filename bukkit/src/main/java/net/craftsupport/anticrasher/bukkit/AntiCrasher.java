@@ -5,6 +5,7 @@ import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.Version;
 import info.preva1l.trashcan.flavor.Flavor;
 import info.preva1l.trashcan.flavor.FlavorOptions;
+import io.github.retrooper.packetevents.bstats.bukkit.Metrics;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
