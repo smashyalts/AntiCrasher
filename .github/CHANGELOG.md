@@ -1,8 +1,8 @@
-# 🚀 AntiCrasher v2.0.2
-A small bug-fix where bStats Metrics would not be initialised for Bukkit and Velocity.
+# 🚀 AntiCrasher v2.0.3
+A small bug-fix, aiming to resolve plugin compat issues with fake players.
 
 ## Changelog
-- Initialised Metrics
+- Fix some plugin incompatibilities
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:

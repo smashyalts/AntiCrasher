@@ -1,6 +1,5 @@
 package net.skullian.anticrasher.velocity.command;
 
-import com.github.retrooper.packetevents.PacketEvents;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
 import info.preva1l.trashcan.flavor.annotations.Configure;
@@ -35,12 +34,12 @@ public class VelocityCommandHandler {
                 commandSource -> {
                     if (commandSource instanceof Player player) {
                         return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
-                                PacketEvents.getAPI().getPlayerManager().getUser(player),
+                                player.getUniqueId(),
                                 player
                         ));
                     }
 
-                    return new VelocityUser(null, UUID.randomUUID(), commandSource);
+                    return new VelocityUser(UUID.randomUUID(), commandSource);
                 },
                 sender -> (CommandSource) sender.getSource()
         );

@@ -18,7 +18,7 @@ public class PlayerEvents {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayerEntity player = handler.getPlayer();
             User user = AntiCrasherAPI.getInstance().getUserManager().create(
-                    PacketEvents.getAPI().getPlayerManager().getUser(player),
+                    player.getUuid(),
                     player.getCommandSource());
 
             if (user.hasPermission("anticrasher.updates")) {

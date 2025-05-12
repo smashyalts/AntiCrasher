@@ -6,9 +6,11 @@ import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.craftsupport.anticrasher.common.util.TextUtil;
+import net.craftsupport.anticrasher.fabric.AntiCrasher;
 import net.craftsupport.anticrasher.fabric.util.PlaceholderProcessor;
 import net.kyori.adventure.text.Component;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,10 +23,11 @@ public class FabricUser extends User {
     private final ServerCommandSource source;
     private final boolean bypass;
 
-    public FabricUser(com.github.retrooper.packetevents.protocol.player.User user, UUID uuid, Object source) {
-        this.user = user;
-        this.uuid = uuid;
+    public FabricUser(UUID uuid, Object source) {
+        ServerPlayerEntity entity = AntiCrasher.server.getPlayerManager().getPlayer(uuid);
+        this.user = entity != null ? PacketEvents.getAPI().getPlayerManager().getUser(entity) : null;
 
+        this.uuid = uuid;
         this.source = (ServerCommandSource) source;
         this.bypass = source != null && Permissions.check(this.source, "anticrasher.bypass");
     }

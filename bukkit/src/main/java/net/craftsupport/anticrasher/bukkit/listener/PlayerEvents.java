@@ -16,7 +16,7 @@ public class PlayerEvents implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         User user = AntiCrasherAPI.getInstance().getUserManager().create(
-                PacketEvents.getAPI().getPlayerManager().getUser(player),
+                player.getUniqueId(),
                 player
         );
 

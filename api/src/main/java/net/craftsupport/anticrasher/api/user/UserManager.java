@@ -18,24 +18,24 @@ public interface UserManager {
     /**
      * Fetch an already cached user, otherwise create one.
      * Do not use this unless necessary.
-     * @param user PE User of player.
+     * @param uuid UUID of player.
      * @param source Original platform source.
      * @return {@link User} instance.
      */
-    @NotNull User getOrCreate(com.github.retrooper.packetevents.protocol.player.User user, Object source);
+    @NotNull User getOrCreate(UUID uuid, Object source);
 
     /**
      * Create a new {@link User} object, and cache it.
      * This is typically referenced on join.
-     * @param user The PacketEvents user.
+     * @param uuid The user UUID.
      * @param source The original source of the user. E.g. CommandSource for Paper.
      * @return The user object.
      */
-    User create(com.github.retrooper.packetevents.protocol.player.User user, Object source);
+    User create(UUID uuid, Object source);
 
     /**
      * Invalidate a user object.
-     * This is typically called on player quit.
+     * This is typically called on player leave.
      *
      * @param uuid The UUID of the user.
      */

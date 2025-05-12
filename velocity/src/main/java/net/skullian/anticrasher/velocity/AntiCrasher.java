@@ -88,7 +88,7 @@ public class AntiCrasher implements Platform {
         LibraryLoader libraryLoader = new LibraryLoader();
         libraryLoader.load();
 
-        AntiCrasher.instance.setConsoleUser(new VelocityUser(null, UUID.randomUUID(), server.getConsoleCommandSource()));
+        AntiCrasher.instance.setConsoleUser(new VelocityUser(UUID.randomUUID(), server.getConsoleCommandSource()));
 
         ServiceManager.onEnable();
     }
