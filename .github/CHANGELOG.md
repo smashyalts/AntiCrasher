@@ -3,6 +3,7 @@ A small bug-fix, aiming to resolve plugin compat issues with fake players.
 
 ## Changelog
 - Fix some plugin incompatibilities
+- Check for NPC or fake-player metadata [Bukkit]
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:

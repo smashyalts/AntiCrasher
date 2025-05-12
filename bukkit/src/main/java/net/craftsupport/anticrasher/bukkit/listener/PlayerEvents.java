@@ -1,6 +1,5 @@
 package net.craftsupport.anticrasher.bukkit.listener;
 
-import com.github.retrooper.packetevents.PacketEvents;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.common.update.UpdateChecker;
@@ -15,6 +14,8 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        if (player.hasMetadata("NPC") || player.hasMetadata("fake-player")) return;
+
         User user = AntiCrasherAPI.getInstance().getUserManager().create(
                 player.getUniqueId(),
                 player
