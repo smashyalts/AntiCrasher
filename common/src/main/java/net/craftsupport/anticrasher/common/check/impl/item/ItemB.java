@@ -21,7 +21,7 @@ public class ItemB extends PacketCheck {
     public void handle(PacketReceiveEvent event, User user) {
         if (event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
             WrapperPlayClientEditBook editBook = new WrapperPlayClientEditBook(event);
-            if (editBook.getTitle() == null || editBook.getTitle().length() > 32) {
+            if (editBook.getTitle() != null && editBook.getTitle().length() > 32) {
                 fail(event, user);
             }
         }

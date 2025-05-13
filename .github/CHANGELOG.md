@@ -1,9 +1,8 @@
-# 🚀 AntiCrasher v2.0.3
-A small bug-fix, aiming to resolve plugin compat issues with fake players.
+# 🚀 AntiCrasher v2.0.4
+A critical bug fix for book checks.
 
 ## Changelog
-- Fix some plugin incompatibilities
-- Check for NPC or fake-player metadata [Bukkit]
+- Do not check for title nullability.
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:
