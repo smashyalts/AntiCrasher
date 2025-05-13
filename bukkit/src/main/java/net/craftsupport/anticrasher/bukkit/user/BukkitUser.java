@@ -1,5 +1,6 @@
 package net.craftsupport.anticrasher.bukkit.user;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import lombok.Getter;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
@@ -7,6 +8,7 @@ import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.craftsupport.anticrasher.common.util.TextUtil;
 import net.craftsupport.anticrasher.bukkit.util.PlaceholderProcessor;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -22,10 +24,11 @@ public class BukkitUser extends User {
     private final CommandSender source;
     private final boolean bypass;
 
-    public BukkitUser(com.github.retrooper.packetevents.protocol.player.User user, UUID uuid, Object source) {
-        this.user = user;
-        this.uuid = uuid;
+    public BukkitUser(UUID uuid, Object source) {
+        Player player = Bukkit.getPlayer(uuid);
+        this.user = player != null ? PacketEvents.getAPI().getPlayerManager().getUser(player) : null;
 
+        this.uuid = uuid;
         this.source = (CommandSender) source;
         this.bypass = this.source != null && this.source.hasPermission("anticrasher.bypass");
     }

@@ -69,7 +69,7 @@ public class AntiCrasher extends JavaPlugin implements Platform {
         flavor.startup();
         getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 
-        this.consoleUser = new BukkitUser(null, UUID.randomUUID(), Bukkit.getConsoleSender());
+        this.consoleUser = new BukkitUser(UUID.randomUUID(), Bukkit.getConsoleSender());
 
         ACLogger.info("AntiCrasher enabled with %s checks enabled.".formatted(CheckManager.getInstance().checks.size()));
     }

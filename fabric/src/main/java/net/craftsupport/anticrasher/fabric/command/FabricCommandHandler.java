@@ -34,12 +34,12 @@ public class FabricCommandHandler {
 
                     if (serverCommandSource.isExecutedByPlayer()) {
                         return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
-                                PacketEvents.getAPI().getPlayerManager().getUser(serverCommandSource.getPlayer()),
+                                serverCommandSource.getPlayer().getUuid(),
                                 serverCommandSource.getPlayer()
                         ));
                     }
 
-                    return new FabricUser(null, UUID.randomUUID(), serverCommandSource);
+                    return new FabricUser(UUID.randomUUID(), serverCommandSource);
                 },
                 sender -> (ServerCommandSource) sender.getSource()
         );

@@ -17,7 +17,7 @@ public class LifecycleEvents {
     public void listen() {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             AntiCrasher.server = server;
-            AntiCrasher.instance.setConsoleUser(new FabricUser(null, UUID.randomUUID(), server.getCommandSource())); // cannot do in onInitialize
+            AntiCrasher.instance.setConsoleUser(new FabricUser(UUID.randomUUID(), server.getCommandSource())); // cannot do in onInitialize
         });
 
         ServerLifecycleEvents.SERVER_STOPPING.register(server -> {

@@ -15,19 +15,19 @@ public class BukkitUserManager implements UserManager {
 
     @Override
     public User get(UUID uuid) {
-        if (uuid == null) return new BukkitUser(null, UUID.randomUUID(), null);
+        if (uuid == null) return new BukkitUser(UUID.randomUUID(), null);
 
         return userCache.get(uuid);
     }
 
     @Override
-    public @NotNull User getOrCreate(com.github.retrooper.packetevents.protocol.player.User user, Object source) {
-        return userCache.containsKey(user.getUUID()) ? get(user.getUUID()) : create(user, source);
+    public @NotNull User getOrCreate(UUID uuid, Object source) {
+        return userCache.containsKey(uuid) ? get(uuid) : create(uuid, source);
     }
 
     @Override
-    public User create(com.github.retrooper.packetevents.protocol.player.User user, Object source) {
-        return userCache.computeIfAbsent(user.getUUID(), id -> new BukkitUser(user, id, source));
+    public User create(UUID uuid, Object source) {
+        return userCache.computeIfAbsent(uuid, id -> new BukkitUser(id, source));
     }
 
     @Override

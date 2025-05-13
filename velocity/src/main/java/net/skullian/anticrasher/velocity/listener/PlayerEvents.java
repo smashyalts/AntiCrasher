@@ -15,7 +15,7 @@ public class PlayerEvents {
         User user = AntiCrasherAPI.getInstance().getUserManager().get(event.getPlayer().getUniqueId());
         if (user == null)
             user = AntiCrasherAPI.getInstance().getUserManager().create(
-                    PacketEvents.getAPI().getPlayerManager().getUser(event.getPlayer()),
+                    event.getPlayer().getUniqueId(),
                     event.getPlayer()
             );
 

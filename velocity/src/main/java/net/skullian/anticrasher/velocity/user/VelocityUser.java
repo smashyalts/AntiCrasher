@@ -1,11 +1,13 @@
 package net.skullian.anticrasher.velocity.user;
 
+import com.github.retrooper.packetevents.PacketEvents;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.api.util.objects.Tuple;
 import net.craftsupport.anticrasher.common.util.TextUtil;
 import net.kyori.adventure.text.Component;
+import net.skullian.anticrasher.velocity.AntiCrasher;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,10 +20,11 @@ public class VelocityUser extends User {
     private final CommandSource source;
     private final boolean bypass;
 
-    public VelocityUser(com.github.retrooper.packetevents.protocol.player.User user, UUID uuid, Object source) {
-        this.user = user;
-        this.uuid = uuid;
+    public VelocityUser(UUID uuid, Object source) {
+        Player player = AntiCrasher.getInstance().server.getPlayer(uuid).orElse(null);
+        this.user = player != null ? PacketEvents.getAPI().getPlayerManager().getUser(player) : null;
 
+        this.uuid = uuid;
         this.source = (CommandSource) source;
         this.bypass = this.source != null && this.source.hasPermission("anticrasher.bypass");
     }

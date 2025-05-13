@@ -35,12 +35,12 @@ public class BukkitCommandHandler {
                 commandSender -> {
                     if (commandSender instanceof Player player) {
                         return Objects.requireNonNull(AntiCrasherAPI.getInstance().getUserManager().getOrCreate(
-                                PacketEvents.getAPI().getPlayerManager().getUser(player),
+                                player.getUniqueId(),
                                 player
                         ));
                     }
 
-                    return new BukkitUser(null, UUID.randomUUID(), commandSender);
+                    return new BukkitUser(UUID.randomUUID(), commandSender);
                 },
                 sender -> (CommandSender) sender.getSource()
         );
