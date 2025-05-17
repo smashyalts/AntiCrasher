@@ -51,7 +51,7 @@ loom {
 
 java {
     withSourcesJar()
-    val java = if (stonecutter.eval(mcVersion, ">=1.20.6")) JavaVersion.VERSION_21 else JavaVersion.VERSION_17
+    val java = JavaVersion.VERSION_21
     targetCompatibility = java
     sourceCompatibility = java
 }
