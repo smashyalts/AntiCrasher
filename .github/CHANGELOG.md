@@ -1,8 +1,9 @@
-# 🚀 AntiCrasher v2.0.4
-A critical bug fix for book checks.
+# 🚀 AntiCrasher v2.0.5
+This version of AntiCrasher adds support for 1.21.5.
 
 ## Changelog
-- Do not check for title nullability.
+- Bump PacketEvents to 1.21.5
+- Add 1.21.5 support to Fabric
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:
