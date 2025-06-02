@@ -54,7 +54,7 @@ adventure = [ "adventure-api", "adventure-text-minimessage", "adventure-text-log
 runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runtask-version" }
 runvelocity = { id = "xyz.jpenilla.run-velocity", version.ref = "runtask-version" }
 
-shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta13" }
+shadow = { id = "com.gradleup.shadow", version = "9.0.0-beta15" }
 minotaur = { id = "com.modrinth.minotaur", version = "2.+" }
 idea = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.10" }
 
