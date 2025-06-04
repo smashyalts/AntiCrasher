@@ -1,7 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.craftsupport.anticrasher.bundleCatalog
 import net.craftsupport.anticrasher.libVersionCatalog
-import net.craftsupport.anticrasher.versionCatalog
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     `java-library`
@@ -10,6 +9,8 @@ plugins {
 
 group = rootProject.group
 version = rootProject.version
+
+val libs = the<LibrariesForLibs>()
 
 repositories {
     mavenCentral()
@@ -28,13 +29,13 @@ repositories {
 }
 
 dependencies {
-    versionCatalog(project, "gson", ::compileOnly)
-    versionCatalog(project, "packetevents-api", ::compileOnly)
-    versionCatalog(project, "trashcan-common", ::implementation)
-    bundleCatalog(project, "adventure", ::api)
+    compileOnly(libs.gson)
+    compileOnly(libs.packetevents.api)
+    implementation(libs.trashcan.common)
+    api(libs.bundles.adventure)
 
-    compileOnly("org.projectlombok:lombok:1.18.36")
-    annotationProcessor("org.projectlombok:lombok:1.18.36")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 }
 
 // TODO - HACKY WORKAROUND! find a way to not make gradle make me want to kill myself
