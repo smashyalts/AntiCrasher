@@ -1,7 +1,5 @@
 import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.annotationProcessor
 import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.compileOnly
-import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.implementation
-import net.craftsupport.anticrasher.versionCatalog
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {

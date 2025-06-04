@@ -1,5 +1,4 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.craftsupport.anticrasher.libVersionCatalog
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
@@ -41,9 +40,9 @@ dependencies {
 // TODO - HACKY WORKAROUND! find a way to not make gradle make me want to kill myself
 fun variables(): Map<String, String> = mapOf(
     "version" to rootProject.version.toString(),
-    "adventureVersion" to libVersionCatalog(project, "adventure.version").toString(),
-    "cloudVersion" to libVersionCatalog(project, "cloud.version").toString(),
-    "reflectionsVersion" to libVersionCatalog(project, "reflections.version").toString(),
+    "adventureVersion" to libs.versions.adventure.version.get(),
+    "cloudVersion" to libs.versions.cloud.version.get(),
+    "reflectionsVersion" to libs.versions.reflections.version.get(),
 )
 
 tasks {
