@@ -31,6 +31,11 @@ public class WindowA extends PacketCheck {
             } else if (windowId >= 0 && clickType == 2 && slot < 0) {
                 fail(event, user);
             }
+
+            if (windowId == 0 && slot >= 36 && clickType == 2) { // Prevent creative inventory exploits
+                fail(event, user);
+                return;
+            }
         }
     }
 }
