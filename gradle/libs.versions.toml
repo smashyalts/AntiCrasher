@@ -15,7 +15,7 @@ gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
 reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections-version" }
 trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
 packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
-lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.36" }
+lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.38" }
 
 # Plugins
 plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version = "9.0.0-beta15" }
