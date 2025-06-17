@@ -18,7 +18,7 @@ packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", 
 lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.36" }
 
 # Plugins
-plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version = "9.0.0-beta15" }
+plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version = "9.0.0-beta16" }
 
 ## Cloud Common
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
