@@ -1,7 +1,7 @@
 [versions]
-plugin-version = "2.0.5"
+plugin-version = "2.0.6"
 
-packetevents-version = "2.8.0"
+packetevents-version = "2.9.0-SNAPSHOT"
 cloud-version = "2.0.0"
 lombok-version = "1.18.38"
 trashcan-version = "1.0.1"
@@ -32,7 +32,7 @@ adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logg
 ## Fabric
 libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
 fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.3.3" }
-packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.8.0-SNAPSHOT" }
+packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.9.0-SNAPSHOT" }
 cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.9" }
 
 # Velocity
