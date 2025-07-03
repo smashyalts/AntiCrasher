@@ -1,5 +1,6 @@
-import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.implementation
-import net.craftsupport.anticrasher.versionCatalog
+import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.annotationProcessor
+import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.compileOnly
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     `java-library`
@@ -12,11 +13,13 @@ configurations {
     create("zipConfig")
 }
 
+val libs = the<LibrariesForLibs>()
+
 repositories {
     mavenCentral()
     maven {
-        name = "codemc-releases"
-        url = uri("https://repo.codemc.io/repository/maven-releases/")
+        name = "codemc-snapshots"
+        url = uri("https://repo.codemc.io/repository/maven-snapshots/")
     }
     maven {
         name = "finallyADecentReleases"
@@ -30,17 +33,13 @@ repositories {
         name = "Nucleoid"
         url = uri("https://maven.nucleoid.xyz/")
     }
-    maven {
-        name = "CodeMC Snapshots"
-        url = uri("https://repo.codemc.io/repository/maven-snapshots/")
-    }
 }
 
 dependencies {
-    versionCatalog(project, "trashcan-common", ::compileOnly)
+    compileOnly(libs.trashcan.common)
 
-    compileOnly("org.projectlombok:lombok:1.18.36")
-    annotationProcessor("org.projectlombok:lombok:1.18.36")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 }
 
 tasks {

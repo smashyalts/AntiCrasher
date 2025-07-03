@@ -8,9 +8,7 @@ repositories {
 }
 
 dependencies {
-    fun plugin(dependency: Provider<PluginDependency>) = dependency.map {
-        "${it.pluginId}:${it.pluginId}.gradle.plugin:${it.version}"
-    }
+    implementation(libs.plugin.shadow)
 
-    implementation ( plugin( libs.plugins.shadow ) )
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }

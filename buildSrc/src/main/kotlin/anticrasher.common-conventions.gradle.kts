@@ -1,7 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.craftsupport.anticrasher.bundleCatalog
-import net.craftsupport.anticrasher.libVersionCatalog
-import net.craftsupport.anticrasher.versionCatalog
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     `java-library`
@@ -11,11 +9,13 @@ plugins {
 group = rootProject.group
 version = rootProject.version
 
+val libs = the<LibrariesForLibs>()
+
 repositories {
     mavenCentral()
     maven {
-        name = "codemc-releases"
-        url = uri("https://repo.codemc.io/repository/maven-releases/")
+        name = "codemc-snapshots"
+        url = uri("https://repo.codemc.io/repository/maven-snapshots/")
     }
     maven {
         name = "finallyADecentReleases"
@@ -28,21 +28,21 @@ repositories {
 }
 
 dependencies {
-    versionCatalog(project, "gson", ::compileOnly)
-    versionCatalog(project, "packetevents-api", ::compileOnly)
-    versionCatalog(project, "trashcan-common", ::implementation)
-    bundleCatalog(project, "adventure", ::api)
+    compileOnly(libs.gson)
+    compileOnly(libs.packetevents.api)
+    implementation(libs.trashcan.common)
+    api(libs.bundles.adventure)
 
-    compileOnly("org.projectlombok:lombok:1.18.36")
-    annotationProcessor("org.projectlombok:lombok:1.18.36")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 }
 
 // TODO - HACKY WORKAROUND! find a way to not make gradle make me want to kill myself
 fun variables(): Map<String, String> = mapOf(
     "version" to rootProject.version.toString(),
-    "adventureVersion" to libVersionCatalog(project, "adventure.version").toString(),
-    "cloudVersion" to libVersionCatalog(project, "cloud.version").toString(),
-    "reflectionsVersion" to libVersionCatalog(project, "reflections.version").toString(),
+    "adventureVersion" to libs.versions.adventure.version.get(),
+    "cloudVersion" to libs.versions.cloud.version.get(),
+    "reflectionsVersion" to libs.versions.reflections.version.get(),
 )
 
 tasks {
