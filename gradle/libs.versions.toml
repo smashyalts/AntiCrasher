@@ -39,14 +39,14 @@ cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-
 velocity-api = { group = "com.velocitypowered", name = "velocity-api", version = "3.4.0-SNAPSHOT" }
 libby-velocity = { module = "com.alessiodp.libby:libby-velocity", version = "2.0.0-SNAPSHOT" }
 packetevents-velocity = { group = "com.github.retrooper", name = "packetevents-velocity", version.ref = "packetevents-version" }
-cloud-velocity = { group = "org.incendo", name = "cloud-velocity", version = "2.0.0-beta.10" }
+cloud-velocity = { group = "org.incendo", name = "cloud-velocity", version = "2.0.0-beta.11" }
 
 ## Paper
 paper-api = { group = "io.papermc.paper", name = "paper-api", version = "1.17-R0.1-SNAPSHOT" }
 placeholderapi = { group = "me.clip", name = "placeholderapi", version = "2.11.6" }
 multilib = { group = "com.github.puregero", name = "multilib", version = "1.2.4" }
 packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents-version" }
-cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.10" }
+cloud-paper = { group = "org.incendo", name = "cloud-paper", version = "2.0.0-beta.11" }
 
 [bundles]
 cloud-common = [ "cloud-core", "cloud-annotations" ]
