@@ -1,6 +1,5 @@
 package net.craftsupport.anticrasher.fabric.command;
 
-import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.flavor.annotations.Configure;
 import info.preva1l.trashcan.flavor.annotations.Service;
 import lombok.Getter;

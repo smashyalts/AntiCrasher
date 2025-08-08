@@ -17,6 +17,10 @@ public class LifecycleEvents {
     public void listen() {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             AntiCrasher.server = server;
+        });
+
+        // breaks in SERVER_STARTING in 1.21.7/8
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             AntiCrasher.instance.setConsoleUser(new FabricUser(UUID.randomUUID(), server.getCommandSource())); // cannot do in onInitialize
         });
 
