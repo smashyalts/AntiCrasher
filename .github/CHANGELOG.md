@@ -1,9 +1,9 @@
-# 🚀 AntiCrasher v2.0.6
-This version of AntiCrasher adds support for 1.21.6 for Fabric, and 1.21.7 for Bukkit &Velocity.
+# 🚀 AntiCrasher v2.0.7
+This version of AntiCrasher adds support for 1.21.8 for all platforms.
 
 ## Changelog
-- Bump PacketEvents to 2.9.0 (1.21.7 support).
-- Add 1.21.6 support to Fabric
+- Bump PacketEvents to 2.9.4 (1.21.7+ support)
+- Add 1.21.8 support to all platforms
 
 ## Patches
 The following exploits are currently patched in this plugin/mod:
