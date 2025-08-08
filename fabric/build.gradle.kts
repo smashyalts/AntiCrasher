@@ -37,6 +37,9 @@ dependencies {
     include(libs.cloud.fabric)
     compileOnly(libs.cloud.annotations)
 
+    modImplementation(libs.fabric.permissions.api)
+    include(libs.fabric.permissions.api)
+
     api(project(":common"))
     zipConfig(project(":common"))
 }
