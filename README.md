@@ -12,6 +12,7 @@
 </div>
 
 ## Available for Paper, Fabric, Velocity, and Folia
+
 A collection of crash, dupe, and miscellaneous exploit patches bundled into a single plugin/mod.
 
 ## Patches
@@ -23,6 +24,9 @@ The following exploits are currently patched in this plugin/mod:
 
 ## Installation
 ### Paper/Folia/Velocity
+>[!NOTE]
+>You only need to run this on the backends, or the proxy, **not on both**.
+
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=spigot&l=purpur&l=paper&l=bukkit&l=folia) and place it in the `plugins` folder. Restart the server/proxy.
 
 ### Fabric
@@ -43,3 +47,4 @@ The following exploits are currently patched in this plugin/mod:
 - `anticrasher.bypass` - Bypass all AntiCrasher checks.
 
 - `anticrasher.updates` - Receive plugin update notifications
+
