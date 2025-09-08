@@ -27,7 +27,7 @@ The following exploits are currently patched in this plugin/mod:
 
 ### Fabric
 >[!WARNING]
-> PacketEvents Fabric is currently broken for online mode servers running 1.20.4 and onwards.
+> PacketEvents Fabric is currently broken for online mode servers running 1.20.4-1.21.7 and onwards.
 > There is no workaround for this issue at the moment. If you run a Velocity proxy, you can use the proxy version there instead.
 
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=fabric) and place it in the `mods` folder.
@@ -41,4 +41,5 @@ The following exploits are currently patched in this plugin/mod:
 ## Permissions
 - `anticrasher.alerts` - Receive alerts when a player attempts to run an exploit.
 - `anticrasher.bypass` - Bypass all AntiCrasher checks.
+
 - `anticrasher.updates` - Receive plugin update notifications
