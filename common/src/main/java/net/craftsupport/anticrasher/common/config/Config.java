@@ -43,7 +43,8 @@ public class Config {
                 
                 Alerts format for chat alerts. (MiniMessage only)
                 Available placeholders:
-                <player_name> - The name of the player who triggered the alert
+                <player_name> - The name of the player who failed the exploit check.
+                <player_uuid> - The UUID of the player who failed the exploit check.
                 <exploit_name> - The name of the exploit that was triggered (e.g. Book, PluginMessage, etc.)
                 <exploit_type> - The type of the check that was triggered (e.g. A, B, C, D)
                 <exploit_description> - The description of the exploit that was triggered""")
