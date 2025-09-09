@@ -12,7 +12,6 @@
 </div>
 
 ## Available for Paper, Fabric, Velocity, and Folia
-
 A collection of crash, dupe, and miscellaneous exploit patches bundled into a single plugin/mod.
 
 ## Patches
@@ -37,7 +36,7 @@ The following exploits are currently patched in this plugin/mod:
 1. Download the latest version from [Modrinth](https://modrinth.com/plugin/anticrasher/versions?l=fabric) and place it in the `mods` folder.
 2. Install the latest [Fabric API](https://modrinth.com/mod/fabric-api/versions) for your server.
 3. Download the latest `fabric-build` package from [Axionize/packetevents](https://github.com/Axionize/packetevents/actions/workflows/gradle-publish.yml?query=branch%3Afix%2Ffabric-events+is%3Asuccess), and place it in the `mods` folder. Restart your server.
-    Use the [Official PacketEvents Builds](https://modrinth.com/plugin/packetevents) for 1.21.8+.
+   Use the [Official PacketEvents Builds](https://modrinth.com/plugin/packetevents) for 1.21.8+.
 
 ## Commands
 - /ac reload - Reloads configs. `anticrasher.command.reload`
@@ -45,6 +44,4 @@ The following exploits are currently patched in this plugin/mod:
 ## Permissions
 - `anticrasher.alerts` - Receive alerts when a player attempts to run an exploit.
 - `anticrasher.bypass` - Bypass all AntiCrasher checks.
-
 - `anticrasher.updates` - Receive plugin update notifications
-
