@@ -5,7 +5,7 @@ packetevents-version = "2.9.5-SNAPSHOT"
 cloud-version = "2.0.0"
 lombok-version = "1.18.40"
 trashcan-version = "1.0.1"
-adventure-version = "4.24.0"
+adventure-version = "4.25.0"
 reflections-version = "0.10.2"
 runtask-version = "2.3.1"
 
