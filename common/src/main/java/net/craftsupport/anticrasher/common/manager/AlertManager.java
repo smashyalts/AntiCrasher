@@ -139,6 +139,7 @@ public abstract class AlertManager {
         return violation.user().processPlaceholders(message
                 .replace("<player_name>", violation.user().getName())
                 .replace("<player_uuid>", violation.user().getUniqueId().toString())
+                .replace("<player_ip>", violation.user().toPE().getAddress().getHostString())
                 .replace("<exploit_name>", violation.check().getName())
                 .replace("<exploit_type>", violation.check().getType())
                 .replace("<exploit_description>", violation.check().getDescription()));
