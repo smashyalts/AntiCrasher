@@ -15,6 +15,7 @@
 A collection of crash, dupe, and miscellaneous exploit patches bundled into a single plugin/mod.
 
 ## Patches
+Please note that this plugin is mainly designed for older versions of Minecraft.\
 The following exploits are currently patched in this plugin/mod:
 - **Bundle Crash Exploit**
 - **Book Dupe Exploit**

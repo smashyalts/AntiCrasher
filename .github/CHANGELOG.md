@@ -1,11 +1,12 @@
-# 🚀 AntiCrasher v2.0.8
+# 🚀 AntiCrasher v2.0.9
 A small update adding another placeholder to the config.
 
 ## Changelog
-- Bumped PacketEvents to 2.9.5 (bug fixes)
-- Added `<player_uuid>` placeholder to config
+- Bumped PacketEvents to 2.9.6-SNAPSHOT (bug fixes) 
+    - Should fix incompatibility with Sonar on the proxy!
 
 ## Patches
+Please note that this plugin is mainly designed for older versions of Minecraft.\
 The following exploits are currently patched in this plugin/mod:
 - **Bundle Crash Exploit**
 - **Book Dupe Exploit**
