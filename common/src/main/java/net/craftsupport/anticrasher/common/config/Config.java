@@ -45,6 +45,7 @@ public class Config {
                 Available placeholders:
                 <player_name> - The name of the player who failed the exploit check.
                 <player_uuid> - The UUID of the player who failed the exploit check.
+                <player_ip> - The IP of the player who failed the exploit check. Useful for ban cmds without using PAPI (for whatever reason).
                 <exploit_name> - The name of the exploit that was triggered (e.g. Book, PluginMessage, etc.)
                 <exploit_type> - The type of the check that was triggered (e.g. A, B, C, D)
                 <exploit_description> - The description of the exploit that was triggered""")

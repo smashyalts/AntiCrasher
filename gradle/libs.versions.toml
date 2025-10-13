@@ -1,9 +1,9 @@
 [versions]
-plugin-version = "2.0.8"
+plugin-version = "2.0.9"
 
-packetevents-version = "2.9.5-SNAPSHOT"
+packetevents-version = "2.9.6-SNAPSHOT"
 cloud-version = "2.0.0"
-lombok-version = "1.18.38"
+lombok-version = "1.18.40"
 trashcan-version = "1.0.1"
 adventure-version = "4.24.0"
 reflections-version = "0.10.2"
@@ -11,14 +11,14 @@ runtask-version = "2.3.1"
 
 [libraries]
 configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.1" }
-gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
+gson = { group = "com.google.code.gson", name = "gson", version = "2.13.2" }
 reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections-version" }
 trashcan-common = { group = "info.preva1l.trashcan", name = "common", version.ref = "trashcan-version" }
 packetevents-api = { group = "com.github.retrooper", name = "packetevents-api", version.ref = "packetevents-version" }
-lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.38" }
+lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.40" }
 
 # Plugins
-plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version = "9.0.2" }
+plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version = "9.1.0" }
 
 ## Cloud Common
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud-version" }
@@ -32,7 +32,7 @@ adventure-text-logger-slf4j = { group = "net.kyori", name = "adventure-text-logg
 ## Fabric
 libby-fabric = { module = "com.alessiodp.libby:libby-fabric", version = "2.0.0-SNAPSHOT" }
 fabric-permissions-api = { module = "me.lucko:fabric-permissions-api", version = "0.4.1" }
-packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version = "2.9.5-SNAPSHOT" }
+packetevents-fabric = { module = "com.github.retrooper:packetevents-fabric", version.ref = "packetevents-version" }
 cloud-fabric = { group = "org.incendo", name = "cloud-fabric", version = "2.0.0-beta.12" }
 
 # Velocity
