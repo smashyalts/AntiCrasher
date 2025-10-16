@@ -1,9 +1,8 @@
-# 🚀 AntiCrasher v2.0.9
-A small update adding another placeholder to the config.
+# 🚀 AntiCrasher v2.0.10
+Mini dev build
 
 ## Changelog
-- Bumped PacketEvents to 2.9.6-SNAPSHOT (bug fixes) 
-    - Should fix incompatibility with Sonar on the proxy!
+- Bumped PacketEvents to 2.10.0-SNAPSHOT (bug fixes)
 
 ## Patches
 Please note that this plugin is mainly designed for older versions of Minecraft.\
