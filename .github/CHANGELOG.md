@@ -1,4 +1,4 @@
-# 🚀 AntiCrasher v2.0.11
+# 🚀 AntiCrasher v2.0.10
 Minor Update
 
 ## Changelog
@@ -37,3 +37,4 @@ The following exploits are currently patched in this plugin/mod:
 - `anticrasher.bypass` - Bypass all AntiCrasher checks.
 
 - `anticrasher.updates` - Receive plugin update notifications
+
