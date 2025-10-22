@@ -1,8 +1,8 @@
-# 🚀 AntiCrasher v2.0.10
-Mini dev build
+# 🚀 AntiCrasher v2.0.11
+Minor Update
 
 ## Changelog
-- Bumped PacketEvents to 2.10.0-SNAPSHOT (bug fixes)
+- Bumped PacketEvents to 2.10.0-SNAPSHOT (latest ver support)
 
 ## Patches
 Please note that this plugin is mainly designed for older versions of Minecraft.\
@@ -35,4 +35,5 @@ The following exploits are currently patched in this plugin/mod:
 ## Permissions
 - `anticrasher.alerts` - Receive alerts when a player attempts to run an exploit.
 - `anticrasher.bypass` - Bypass all AntiCrasher checks.
+
 - `anticrasher.updates` - Receive plugin update notifications
