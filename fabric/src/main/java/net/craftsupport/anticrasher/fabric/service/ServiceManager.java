@@ -1,12 +1,12 @@
 package net.craftsupport.anticrasher.fabric.service;
 
-import info.preva1l.trashcan.flavor.Flavor;
-import info.preva1l.trashcan.flavor.FlavorOptions;
-import info.preva1l.trashcan.logging.ServiceLogFormatter;
+import net.skullian.zenith.core.flavor.Flavor;
+import net.skullian.zenith.core.flavor.FlavorOptions;
 import lombok.experimental.UtilityClass;
 import net.craftsupport.anticrasher.common.manager.CheckManager;
 import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.craftsupport.anticrasher.fabric.AntiCrasher;
+import net.skullian.zenith.core.logging.adapters.impl.JavaLogAdapter;
 
 import java.util.logging.Logger;
 
@@ -20,12 +20,11 @@ public class ServiceManager {
         ACLogger.info("Enabling AntiCrasher...");
 
         logger.setUseParentHandlers(false);
-        logger.addHandler(ServiceLogFormatter.asConsoleHandler(true, "AntiCrasher"));
 
         flavor = Flavor.create(
                 AntiCrasher.instance.getClass(),
                 new FlavorOptions(
-                        Logger.getLogger("AntiCrasher"), // Fabric builtin is slf4j
+                        new JavaLogAdapter(logger), // Fabric builtin is slf4j
                         AntiCrasher.instance.getClass().getPackageName()
                 )
         );

@@ -1,7 +1,7 @@
 package net.craftsupport.anticrasher.fabric.listener;
 
-import info.preva1l.trashcan.flavor.annotations.Configure;
-import info.preva1l.trashcan.flavor.annotations.Service;
+import net.skullian.zenith.core.flavor.annotation.Configure;
+import net.skullian.zenith.core.flavor.annotation.Service;
 import net.craftsupport.anticrasher.fabric.AntiCrasher;
 import net.craftsupport.anticrasher.fabric.service.ServiceManager;
 import net.craftsupport.anticrasher.fabric.user.FabricUser;

@@ -1,3 +1,5 @@
+import net.skullian.zenith.model.ZenithModules
+
 plugins {
     anticrasher.`fabric-conventions`
     alias(libs.plugins.fabric.loom)
@@ -11,6 +13,10 @@ class ModDependencies {
 val mcVersion = stonecutter.current.version
 val deps = ModDependencies()
 val modVersion = rootProject.version.toString()
+
+zenith {
+    modules(ZenithModules.CORE)
+}
 
 base {
     archivesName.set("AntiCrasher-fabric-$mcVersion")
@@ -31,14 +37,16 @@ dependencies {
 
     modImplementation("eu.pb4:placeholder-api:${deps["papi"]}")
 
+    compileOnly(libs.packetevents.api)
     compileOnly(libs.packetevents.fabric)
 
     modImplementation(libs.cloud.fabric)
     include(libs.cloud.fabric)
     compileOnly(libs.cloud.annotations)
 
-    modImplementation(libs.fabric.permissions.api)
-    include(libs.fabric.permissions.api)
+    val permApi = "me.lucko:fabric-permissions-api:${deps["fabric_permissions_api"]}"
+    modImplementation(permApi)
+    include(permApi)
 
     api(project(":common"))
     zipConfig(project(":common"))

@@ -1,9 +1,8 @@
-import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.annotationProcessor
-import gradle.kotlin.dsl.accessors._983bb327668533c52660ac523168b406.compileOnly
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     `java-library`
+    id("net.skullian.zenith")
 }
 
 group = rootProject.group
@@ -22,12 +21,12 @@ repositories {
         url = uri("https://repo.codemc.io/repository/maven-snapshots/")
     }
     maven {
-        name = "finallyADecentReleases"
-        url = uri("https://repo.preva1l.info/releases")
+        name = "central-snapshots"
+        url = uri("https://central.sonatype.com/repository/maven-snapshots/")
     }
     maven {
-        name = "Sonatype Snapshots"
-        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+        name = "AlessioDP Snapshots"
+        url = uri("https://repo.alessiodp.com/snapshots")
     }
     maven {
         name = "Nucleoid"
@@ -36,8 +35,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly(libs.trashcan.common)
-
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
 }
@@ -45,9 +42,15 @@ dependencies {
 tasks {
     withType<JavaCompile> {
         options.compilerArgs.add("-parameters")
-        options.fork()
+        options.isFork = true
         options.encoding = Charsets.UTF_8.name()
-        options.release = 21
+        options.release = 25
+    }
+}
+
+plugins.withId("net.skullian.zenith") {
+    tasks.withType<Jar>().configureEach {
+        dependsOn("generateDependencies")
     }
 }
 

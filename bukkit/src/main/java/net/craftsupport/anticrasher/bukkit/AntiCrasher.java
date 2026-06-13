@@ -3,8 +3,8 @@ package net.craftsupport.anticrasher.bukkit;
 import com.github.puregero.multilib.MultiLib;
 import com.github.retrooper.packetevents.PacketEvents;
 import info.preva1l.trashcan.Version;
-import info.preva1l.trashcan.flavor.Flavor;
-import info.preva1l.trashcan.flavor.FlavorOptions;
+import net.skullian.zenith.core.flavor.Flavor;
+import net.skullian.zenith.core.flavor.FlavorOptions;
 import io.github.retrooper.packetevents.bstats.bukkit.Metrics;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import lombok.Getter;
@@ -16,6 +16,7 @@ import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.craftsupport.anticrasher.bukkit.api.BukkitAntiCrasherAPI;
 import net.craftsupport.anticrasher.bukkit.listener.PlayerEvents;
 import net.craftsupport.anticrasher.bukkit.user.BukkitUser;
+import net.skullian.zenith.core.logging.adapters.impl.JavaLogAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -43,7 +44,7 @@ public class AntiCrasher extends JavaPlugin implements Platform {
         this.flavor = Flavor.create(
                 this.getClass(),
                 new FlavorOptions(
-                        this.getLogger(),
+                        new JavaLogAdapter(this.getLogger()),
                         this.getClass().getPackageName()
                 )
         );
