@@ -1,12 +1,12 @@
 package net.skullian.anticrasher.velocity.service;
 
-import info.preva1l.trashcan.flavor.Flavor;
-import info.preva1l.trashcan.flavor.FlavorOptions;
-import info.preva1l.trashcan.logging.ServiceLogFormatter;
+import net.skullian.zenith.core.flavor.Flavor;
+import net.skullian.zenith.core.flavor.FlavorOptions;
 import lombok.experimental.UtilityClass;
 import net.craftsupport.anticrasher.common.manager.CheckManager;
 import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.skullian.anticrasher.velocity.AntiCrasher;
+import net.skullian.zenith.core.logging.adapters.impl.JavaLogAdapter;
 
 import java.util.logging.Logger;
 
@@ -20,12 +20,11 @@ public class ServiceManager {
         ACLogger.info("Enabling AntiCrasher...");
 
         logger.setUseParentHandlers(false);
-        logger.addHandler(ServiceLogFormatter.asConsoleHandler(true, "AntiCrasher"));
 
         flavor = Flavor.create(
                 AntiCrasher.getInstance().getClass(),
                 new FlavorOptions(
-                        Logger.getLogger("AntiCrasher"),
+                        new JavaLogAdapter(logger),
                         AntiCrasher.getInstance().getClass().getPackageName()
                 )
         );

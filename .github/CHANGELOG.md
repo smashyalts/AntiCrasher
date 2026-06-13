@@ -1,8 +1,9 @@
-# 🚀 AntiCrasher v2.0.10
+# 🚀 AntiCrasher v2.0.11
 Minor Update
 
 ## Changelog
-- Bumped PacketEvents to 2.10.0-SNAPSHOT (latest ver support)
+- Bumped PacketEvents to 2.12.3-SNAPSHOT (latest ver support)
+- Added 1.21.11 Fabric support & updated some deps
 
 ## Patches
 Please note that this plugin is mainly designed for older versions of Minecraft.\

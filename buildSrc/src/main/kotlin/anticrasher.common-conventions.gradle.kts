@@ -4,6 +4,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 plugins {
     `java-library`
     id("com.gradleup.shadow")
+    id("net.skullian.zenith")
 }
 
 group = rootProject.group
@@ -18,19 +19,18 @@ repositories {
         url = uri("https://repo.codemc.io/repository/maven-snapshots/")
     }
     maven {
-        name = "finallyADecentReleases"
-        url = uri("https://repo.preva1l.info/releases")
+        name = "Sonatype Snapshots"
+        url = uri("https://central.sonatype.com/repository/maven-snapshots/")
     }
     maven {
-        name = "Sonatype Snapshots"
-        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+        name = "AlessioDP Snapshots"
+        url = uri("https://repo.alessiodp.com/snapshots")
     }
 }
 
 dependencies {
     compileOnly(libs.gson)
     compileOnly(libs.packetevents.api)
-    implementation(libs.trashcan.common)
     api(libs.bundles.adventure)
 
     compileOnly(libs.lombok)
@@ -48,9 +48,9 @@ fun variables(): Map<String, String> = mapOf(
 tasks {
     withType<JavaCompile> {
         options.compilerArgs.add("-parameters")
-        options.fork()
+        options.isFork = true
         options.encoding = Charsets.UTF_8.name()
-        options.release = 21
+        options.release = 25
     }
 
     withType<ProcessResources> {

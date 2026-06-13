@@ -3,9 +3,10 @@ include(":common", ":api", ":bukkit", ":fabric", ":velocity")
 
 pluginManagement {
     repositories {
-        maven("https://maven.fabricmc.net/")
         mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.fabricmc.net/")
+        maven("https://repo.skullian.com/releases/")
     }
 }
 
@@ -16,6 +17,6 @@ plugins {
 
 stonecutter {
     create("fabric") {
-        versions("1.21.8", "1.21.6", "1.21.5", "1.21.4", "1.21.1", "1.20.4", "1.20.2", "1.20.1", "1.19.4")
+        versions("1.21.11", "1.21.8", "1.21.6", "1.21.5", "1.21.4", "1.21.1", "1.20.4", "1.20.2", "1.20.1", "1.19.4")
     }
 }

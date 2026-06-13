@@ -1,9 +1,11 @@
+import net.skullian.zenith.model.ZenithModules
+
 plugins {
     anticrasher.`common-conventions`
 }
 
-repositories {
-
+zenith {
+    modules(ZenithModules.CORE)
 }
 
 dependencies {

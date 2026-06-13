@@ -1,8 +1,8 @@
 package net.craftsupport.anticrasher.fabric.listener;
 
 import com.github.retrooper.packetevents.PacketEvents;
-import info.preva1l.trashcan.flavor.annotations.Configure;
-import info.preva1l.trashcan.flavor.annotations.Service;
+import net.skullian.zenith.core.flavor.annotation.Configure;
+import net.skullian.zenith.core.flavor.annotation.Service;
 import net.craftsupport.anticrasher.api.AntiCrasherAPI;
 import net.craftsupport.anticrasher.api.user.User;
 import net.craftsupport.anticrasher.common.update.UpdateChecker;

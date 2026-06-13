@@ -1,12 +1,12 @@
 package net.craftsupport.anticrasher.bukkit.alert;
 
 import com.github.puregero.multilib.MultiLib;
-import info.preva1l.trashcan.flavor.annotations.Configure;
-import info.preva1l.trashcan.flavor.annotations.Service;
 import net.craftsupport.anticrasher.common.config.Config;
 import net.craftsupport.anticrasher.common.manager.AlertManager;
 import net.craftsupport.anticrasher.common.util.ACLogger;
 import net.craftsupport.anticrasher.bukkit.AntiCrasher;
+import net.skullian.zenith.core.flavor.annotation.Configure;
+import net.skullian.zenith.core.flavor.annotation.Service;
 import org.bukkit.Bukkit;
 
 @Service
