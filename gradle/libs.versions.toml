@@ -8,7 +8,7 @@ adventure-version = "4.25.0"
 reflections-version = "0.10.2"
 runtask-version = "3.0.2"
 zenith-version = "1.1.8-dev.10"
-shadow-version = "9.2.2"
+shadow-version = "9.4.2"
 
 [libraries]
 configlib = { group = "de.exlll", name = "configlib-yaml", version = "4.6.4" }
